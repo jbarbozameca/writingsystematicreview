@@ -119,6 +119,33 @@ textarea{resize:vertical;line-height:1.55}
 .scorebar .ok{background:var(--ok)} .scorebar .warn{background:var(--warn)} .scorebar .bad{background:var(--bad)}
 
 /* búsqueda */
+.and{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--acc);text-align:center;margin:8px 0}
+.freerow{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}.freerow input{flex:1 1 180px;min-width:0}.freerow select{flex:0 0 auto;width:auto}
+.termchips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:3px 4px 3px 4px;font-size:13.5px;max-width:100%}
+.chip>span{overflow-wrap:anywhere}
+.chip i{font-style:normal;font-family:var(--mono);font-size:10.5px;font-weight:700;border-radius:999px;padding:2px 7px;background:var(--surface-2);color:var(--muted)}
+.chip.mesh i,.src.mesh{background:var(--brand);color:var(--onbrand)}.chip.eric i,.src.eric{background:var(--acc);color:var(--onbrand)}
+.chip.scr i,.src.scr{background:var(--brand-soft);color:var(--brand)}.chip.voc i,.src.voc{background:var(--acc-soft);color:var(--acc)}
+.chip.es i{background:var(--warn-soft);color:var(--warn)}
+.chip button{border:0;background:none;color:var(--muted);cursor:pointer;font-size:16px;line-height:1;padding:0 6px}.chip button:hover{color:var(--bad)}
+.results{border:1px solid var(--line);border-radius:8px;background:var(--surface);margin-top:6px;max-height:380px;overflow:auto}
+.res{display:flex;justify-content:space-between;gap:10px;width:100%;text-align:left;border:0;border-bottom:1px solid var(--line);background:none;padding:8px 10px;cursor:pointer;color:var(--ink);font:inherit}
+.res:hover,.res:focus-visible{background:var(--surface-2)}.res .nm{display:block;font-weight:600}.res .via{display:block;font-size:12.5px;color:var(--muted)}
+.src{flex:0 0 auto;align-self:center;font-family:var(--mono);font-size:10.5px;font-weight:700;border-radius:999px;padding:2px 8px}
+.resfoot{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:7px 10px;font-size:12.5px;color:var(--muted)}
+.vdetail{border:1px solid var(--brand);border-radius:8px;background:var(--surface);padding:12px;margin-top:8px}
+.vdetail .eyebrow{font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--acc);font-weight:700}
+.vdetail h3{font-size:17px;margin:2px 0 4px}.vdetail .meta{display:flex;flex-wrap:wrap;gap:6px;font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.vdetail .meta span{background:var(--surface-2);border-radius:5px;padding:1px 6px}.vdetail .scope{font-size:13.5px;color:var(--muted);margin:6px 0}
+.vdetail .lbl{font-size:12.5px;font-weight:700;margin:10px 0 4px}
+.checksgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:2px 10px}
+.ckb{display:flex;gap:6px;align-items:flex-start;font-size:13.5px}.ckb em{font-size:11px;color:var(--muted)}
+.kids{display:flex;flex-wrap:wrap;gap:4px}.kid{border:1px solid var(--line);background:var(--surface-2);border-radius:6px;padding:2px 8px;font-size:12.5px;cursor:pointer;color:var(--ink)}
+.vdetail .links{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px;font-size:13px}
+.voc{display:flex;gap:8px;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(--line);font-size:13.5px}.voc small{display:block;color:var(--muted);font-size:12px}
+.voc>span:nth-child(2){flex:1;min-width:0}.vst{font-size:11.5px;color:var(--muted);white-space:nowrap}.vst.ready{color:var(--ok)}.vst.error{color:var(--bad)}
+pre.code .op{color:var(--acc);font-weight:700}pre.code .fld{color:var(--brand)}pre.code .ln{color:var(--muted)}
 .block{border:1px solid var(--line);border-radius:8px;padding:12px;background:var(--surface-2)}
 .block h4{font-size:15px;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
 .block .and{font-family:var(--mono);font-size:12px;color:var(--acc);text-align:center;margin:6px 0}
@@ -361,20 +388,24 @@ footer.site img{height:34px;filter:var(--logo);vertical-align:middle;margin-righ
 
   <!-- 02 SEARCH -->
   <section class="panel" id="p-bus" role="tabpanel" aria-labelledby="tab-bus" hidden>
-    <div class="intro" style="margin-bottom:16px"><p>One block for each question component ticked as “search” (umbrella reviews add a study design block). Write one term per line, complete and exact: no field tags in brackets, no truncation or wildcards, and no breaking concepts into parts. The laboratory adds the quotation marks, joins terms with OR within a block and blocks with AND, and translates the strategy for each database. Limits (years, language, publication type) are applied with each interface’s filters.</p></div>
+    <div class="intro" style="margin-bottom:16px"><p>One block for each question component ticked as “search” (umbrella reviews add a study design block). In each block, look up the concept in the thesauri of your field and add the descriptor together with its entry terms and Spanish equivalents (double column: controlled vocabulary plus free text). Every term is complete and exact: no field tags in brackets, no truncation or wildcards, and no breaking concepts into parts. The laboratory joins terms with OR within a block and blocks with AND, and writes the syntax for each database. Limits (years, language, publication type) are applied with each interface’s filters. Engine: <b>Tau Strategy Builder</b> (Dr Joshuan J. Barboza).</p></div>
     <div class="grid-65">
-      <div class="card pad">
+      <div class="card pad" style="min-width:0">
         <div class="row" style="justify-content:space-between"><div class="label">Search blocks</div><span class="pill" id="blocksum"></span></div>
         <div id="blocks" style="margin-top:12px"></div>
       </div>
       <div class="stack" style="min-width:0">
         <div class="card pad">
-          <div class="row" style="justify-content:space-between">
-            <div class="label">Strategy by database</div>
-            <div class="seg" id="dbseg" role="group" aria-label="Database"></div>
-          </div>
-          <pre class="code" id="formula" style="margin-top:12px"></pre>
-          <div class="row" style="margin-top:10px"><button class="btn small" id="copyformula">Copy strategy</button><button class="btn small" id="copyall">Copy all (appendix)</button><span class="msg" id="fmsg"></span></div>
+          <div class="label">Thesauri for this area</div>
+          <div id="voclist" style="margin-top:6px"></div>
+          <p class="msg" id="vocnote" style="margin:8px 0 0"></p>
+        </div>
+        <div class="card pad">
+          <div class="label">Strategy by database</div>
+          <div class="seg" id="dbseg" role="group" aria-label="Database" style="margin-top:8px"></div>
+          <div class="row" style="margin-top:10px;gap:14px"><label class="ckb"><input type="checkbox" id="opt-es">Spanish terms in international databases</label><label class="ckb"><input type="checkbox" id="opt-emtree">Embase: propose MeSH as Emtree (/exp)</label></div>
+          <pre class="code" id="formula" style="margin-top:10px"></pre>
+          <div class="row" style="margin-top:10px"><button class="btn small" id="copyformula">Copy (line by line)</button><button class="btn small" id="copyone">Copy (one line)</button><button class="btn small" id="copyall">Copy PRISMA-S report</button><a class="btn small" id="pubrun" target="_blank" rel="noopener" hidden>Run in PubMed</a><span class="msg" id="fmsg"></span></div>
           <p class="msg" id="dbnote" style="margin:8px 0 0"></p>
         </div>
         <div class="card pad">
@@ -646,6 +677,7 @@ footer.site img{height:34px;filter:var(--logo);vertical-align:middle;margin-righ
           <h3 style="margin-top:4px">Dr Joshuan J. Barboza</h3>
           <div class="roles">PhD in Clinical and Translational Research · RENACYT Distinguished Researcher · Research Professor, Office of the Vice-Rector for Research, Universidad Señor de Sipán · Cochrane member (USIL, affiliated with INS) · Founder of Tau Clinical Research</div>
           <p style="margin:0 0 6px">Concept, methodological content, search rules, writing pattern catalogue and teaching design: Dr Joshuan J. Barboza. ORCID <a href="https://orcid.org/0000-0002-2896-1407" target="_blank" rel="noopener">0000-0002-2896-1407</a> · Scopus ID 57204457871 · <a href="https://investigaciontau.com" target="_blank" rel="noopener">investigaciontau.com</a></p>
+          <p style="margin:0 0 6px">Search engine: <b>Tau Strategy Builder</b> (Constructor de Estrategias Tau), also by Dr Joshuan J. Barboza: thesaurus look-up and syntax for 16 databases. Vocabularies: MeSH and supplementary concepts (U.S. National Library of Medicine), ERIC Thesaurus (Institute of Education Sciences), NCI Thesaurus, Human Phenotype Ontology, UNESCO Thesaurus, ELSST (CESSDA), EuroVoc (European Union), STW (ZBW), AGROVOC (FAO), GEMET (European Environment Agency), NASA Thesaurus, Getty AAT and Library of Congress Subject Headings, each used under its own licence.</p>
           <p class="msg" style="margin:0">© 2026 Tau Clinical Research. All rights reserved. For educational use in Tau Clinical Research programmes. Cite as: Barboza JJ. Systematic Review Laboratory [web tool]. Tau Clinical Research; 2026.</p>
           <details style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">Methodological foundations and reporting guidelines</summary><ol class="refs" id="refs"></ol></details>
         </div>
@@ -1217,7 +1249,7 @@ const EXLIB = [
   titulo:"Supervised aerobic exercise for depressive symptoms in older adults: a systematic review and meta-analysis",
   obj:"To estimate the effect of supervised aerobic exercise, compared with usual care or waitlist, on depressive symptoms in older adults aged 60 years or over.",
   dis:["eca"],rob:["RoB 2"],sint:"Random-effects meta-analysis (REML + Hartung-Knapp-Sidik-Jonkman)",regBase:"PROSPERO",reg:""},
- search:{blocks:{P:"older adults\nolder people\nolder persons\naged\nelderly",I:"aerobic exercise\naerobic training\nphysical exercise\nexercise training\nwalking",O:"depression\ndepressive symptoms\ndepressive disorder\ndepressive disorders"},design:"",db:"pubmed",
+ search:{blocks:{P:"MeSH: Aged\nolder adults\nolder people\nolder persons\nelderly\nES: anciano\nES: personas mayores",I:"MeSH: Exercise\naerobic exercise\naerobic training\nphysical exercise\nexercise training\nwalking\nES: ejercicio físico",O:"MeSH: Depression\nMeSH: Depressive Disorder\ndepression\ndepressive symptoms\ndepressive disorder\ndepressive disorders\nES: depresión"},design:"",db:"pubmed",
   log:[{db:"PubMed",plat:"NLM",fecha:"2026-03-15",lim:"None",n:"402"},{db:"Embase",plat:"Elsevier",fecha:"2026-03-15",lim:"None",n:"388"},{db:"Scopus",plat:"Elsevier",fecha:"2026-03-15",lim:"None",n:"251"},{db:"Web of Science Core Collection",plat:"Clarivate",fecha:"2026-03-15",lim:"None",n:"199"}]},
  flow:{regs:"35",dup:"412",auto:"0",other:"0",excl:"801",notret:"3",reasons:"Non-randomised design: 21\nIneligible comparator: 14\nParticipants younger than 60 years: 9",oid:"8",onotret:"0",reasonsB:"Non-randomised design: 6",studies:"17",reports:"17"},
  drafts:{
@@ -1237,7 +1269,7 @@ const EXLIB = [
   titulo:"Probiotics for the prevention of necrotising enterocolitis in preterm infants: an umbrella review of systematic reviews and meta-analyses",
   obj:"To summarise and appraise the evidence from systematic reviews and meta-analyses on the effect of probiotics, compared with placebo or no treatment, on necrotising enterocolitis in preterm infants.",
   dis:["rs"],rob:["AMSTAR 2"],sint:"Tabular summary of reviews with standardised reanalysis",regBase:"PROSPERO",reg:""},
- search:{blocks:{P:"preterm infants\npreterm infant\npremature infants\npremature infant\nvery low birth weight\nextremely low birth weight",I:"probiotics\nprobiotic\nLactobacillus\nBifidobacterium"},design:"systematic review\nsystematic reviews\nmeta-analysis\nmeta-analyses\nmetaanalysis\numbrella review\noverview of reviews",db:"pubmed",
+ search:{blocks:{P:"MeSH: Infant, Premature\nMeSH: Infant, Very Low Birth Weight\npreterm infants\npreterm infant\npremature infants\npremature infant\nvery low birth weight\nextremely low birth weight\nES: recién nacido prematuro",I:"MeSH: Probiotics\nprobiotics\nprobiotic\nLactobacillus\nBifidobacterium\nES: probióticos"},design:"",db:"pubmed",
   log:[{db:"PubMed",plat:"NLM",fecha:"2026-04-02",lim:"None",n:"214"},{db:"Embase",plat:"Elsevier",fecha:"2026-04-02",lim:"None",n:"236"},{db:"Cochrane Database of Systematic Reviews",plat:"Wiley",fecha:"2026-04-02",lim:"None",n:"18"},{db:"Web of Science Core Collection",plat:"Clarivate",fecha:"2026-04-02",lim:"None",n:"131"}]},
  flow:{regs:"0",dup:"241",auto:"0",other:"0",excl:"296",notret:"1",reasons:"Narrative review without systematic search: 22\nNo pooled estimate for NEC: 17\nMixed term and preterm population: 9",oid:"",onotret:"",reasonsB:"",studies:"13",reports:"13"},
  drafts:{
@@ -1257,7 +1289,7 @@ const EXLIB = [
   titulo:"Generative AI feedback and academic writing performance in university students: a systematic review and meta-analysis",
   obj:"To estimate the effect of feedback from generative AI tools, compared with teacher feedback or no feedback, on the academic writing performance of university students.",
   dis:["eca","noal"],rob:["RoB 2","ROBINS-I"],sint:"Random-effects meta-analysis (REML + Hartung-Knapp-Sidik-Jonkman)",regBase:"IDESR",reg:""},
- search:{blocks:{P:"university students\nundergraduate students\ngraduate students\nhigher education\ncollege students",I:"generative artificial intelligence\ngenerative AI\nChatGPT\nlarge language model\nlarge language models\nAI feedback\nautomated feedback",O:"academic writing\nwriting performance\nwriting quality\nwriting skills\nessay writing"},design:"",db:"ebsco",
+ search:{blocks:{P:"ERIC: College Students\nERIC: Undergraduate Students\nuniversity students\nundergraduate students\ngraduate students\nhigher education\ncollege students",I:"ERIC: Artificial Intelligence\nERIC: Feedback (Response)\ngenerative artificial intelligence\ngenerative AI\nChatGPT\nlarge language model\nlarge language models\nAI feedback\nautomated feedback",O:"ERIC: Writing Skills\nERIC: Writing (Composition)\nacademic writing\nwriting performance\nwriting quality\nessay writing"},design:"",db:"eric",
   log:[{db:"ERIC",plat:"EBSCOhost",fecha:"2026-05-10",lim:"2022–2026 (interface filter)",n:"318"},{db:"Scopus",plat:"Elsevier",fecha:"2026-05-10",lim:"2022–2026 (interface filter)",n:"402"},{db:"Web of Science (SSCI)",plat:"Clarivate",fecha:"2026-05-10",lim:"2022–2026 (interface filter)",n:"265"},{db:"APA PsycInfo",plat:"EBSCOhost",fecha:"2026-05-10",lim:"2022–2026 (interface filter)",n:"97"}]},
  flow:{regs:"0",dup:"371",auto:"0",other:"0",excl:"648",notret:"4",reasons:"No control group: 19\nOutcome not writing performance: 12\nK-12 students: 7",oid:"5",onotret:"0",reasonsB:"No control group: 3",studies:"23",reports:"23"},
  drafts:{
@@ -1277,7 +1309,7 @@ const EXLIB = [
   titulo:"Community-based interventions for loneliness in older adults in Latin America: a scoping review",
   obj:"To map the community-based interventions for loneliness in older adults that have been studied in Latin America, the types of evidence available and the outcomes used to evaluate them.",
   dis:["eca","noal","cuali","mix","otros"],rob:[],sint:"Descriptive charting with frequencies and basic content analysis",regBase:"OSF Registries",reg:""},
- search:{blocks:{P:"older adults\nolder people\nolder persons\nelderly\naged\npersonas mayores\nadultos mayores\nidosos",Cn:"loneliness\nsocial isolation\nsocial participation\nsocial support\nsoledad\naislamiento social\nsolidão",Cx:"Latin America\nSouth America\nCentral America\nCaribbean\nArgentina\nBrazil\nChile\nColombia\nMexico\nPeru\nAmérica Latina"},design:"",db:"scopus",
+ search:{blocks:{P:"ELSST: elderly\nolder adults\nolder people\nolder persons\naged\nES: personas mayores\nES: adultos mayores\nES: idosos",Cn:"ELSST: loneliness\nELSST: social isolation\nloneliness\nsocial isolation\nsocial participation\nsocial support\nES: soledad\nES: aislamiento social\nES: solidão",Cx:"Latin America\nSouth America\nCentral America\nCaribbean\nArgentina\nBrazil\nChile\nColombia\nMexico\nPeru\nES: América Latina"},design:"",db:"scopus",
   log:[{db:"Scopus",plat:"Elsevier",fecha:"2026-06-01",lim:"None",n:"512"},{db:"Web of Science (SSCI)",plat:"Clarivate",fecha:"2026-06-01",lim:"None",n:"287"},{db:"SciELO",plat:"SciELO.org",fecha:"2026-06-01",lim:"None",n:"164"},{db:"LILACS",plat:"BVS",fecha:"2026-06-01",lim:"None",n:"139"},{db:"Sociological Abstracts",plat:"ProQuest",fecha:"2026-06-01",lim:"None",n:"76"}]},
  flow:{regs:"0",dup:"318",auto:"0",other:"0",excl:"764",notret:"6",reasons:"Not community-based: 28\nNo loneliness or isolation focus: 20\nOutside Latin America: 14",oid:"14",onotret:"2",reasonsB:"Not community-based: 4",studies:"34",reports:"36"},
  drafts:{
@@ -1511,63 +1543,410 @@ function projectText(){
 }
 $("#copymatrix").addEventListener("click", () => copyText(projectText(), $("#msg-hilo"), "Matrix copied."));
 
-/* ===================== 02 BÚSQUEDA ===================== */
-const DESIGN_DEFAULT = "systematic review\nsystematic reviews\nmeta-analysis\nmeta-analyses\nmetaanalysis\numbrella review\noverview of reviews";
-function termsOf(txt){ return String(txt||"").split(/\n+/).map(x => x.trim().replace(/^["'“”]+|["'“”]+$/g,"")).filter(Boolean); }
-function activeBlocks(){
-  const b = searchComps().map(([k,l]) => ({key:k, label:l, terms:termsOf(S.search.blocks[k])}));
-  if (T().disenoBloque) b.push({key:"_design", label:"Design (reviews)", terms:termsOf(S.search.design || DESIGN_DEFAULT)});
+/* ===================== 02 SEARCH (Tau Strategy Builder engine) =====================
+   Based on the Constructor de Estrategias Tau (Dr Joshuan J. Barboza): thesaurus look-up across
+   MeSH 2026, MeSH supplementary concepts, ERIC and 11 more vocabularies, double-column blocks
+   (controlled + free text) and syntax for 16 databases. Data files are loaded lazily from the
+   same folder as this page (mesh-data.js, eric-data.js, scr-data-*.js, voc/*.js). */
+const VOCABS = {
+  mesh:{name:"MeSH 2026 (NLM)",short:"MeSH",n:31110,mb:5.5,files:["mesh-data.js"]},
+  scr:{name:"MeSH supplementary concepts 2026",short:"SCR",n:324046,mb:31,files:["scr-data-1.js","scr-data-2.js","scr-data-3.js","scr-data-4.js"]},
+  eric:{name:"ERIC Thesaurus 2025 (IES)",short:"ERIC",n:4578,mb:1.8,files:["eric-data.js"]},
+  ncit:{name:"NCI Thesaurus",short:"NCIt",n:204721,mb:30.4,files:5,url:"https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code={id}"},
+  hpo:{name:"Human Phenotype Ontology",short:"HPO",n:19894,mb:5.2,files:1,url:"https://hpo.jax.org/browse/term/{id}"},
+  unesco:{name:"UNESCO Thesaurus",short:"UNESCO",n:4500,mb:0.7,files:1,url:"https://vocabularies.unesco.org/thesaurus/{id}"},
+  elsst:{name:"ELSST, social sciences (CESSDA)",short:"ELSST",n:3422,mb:0.6,files:1,url:"https://elsst.cessda.eu/id/4/{id}"},
+  eurovoc:{name:"EuroVoc (European Union)",short:"EuroVoc",n:7515,mb:1.2,files:1,url:"http://eurovoc.europa.eu/{id}"},
+  stw:{name:"STW Thesaurus for Economics (ZBW)",short:"STW",n:6696,mb:1.1,files:1,url:"https://zbw.eu/stw/version/latest/descriptor/{id}/about"},
+  agrovoc:{name:"AGROVOC (FAO)",short:"AGROVOC",n:42053,mb:4.4,files:1,url:"http://aims.fao.org/aos/agrovoc/{id}"},
+  gemet:{name:"GEMET, environment (EEA)",short:"GEMET",n:5573,mb:1.4,files:1,url:"https://www.eionet.europa.eu/gemet/en/concept/{id}"},
+  nasa:{name:"NASA Thesaurus",short:"NASA",n:22622,mb:1.7,files:1,url:"https://sti.nasa.gov/nasa-thesaurus/"},
+  aat:{name:"Getty Art & Architecture Thesaurus",short:"AAT",n:55575,mb:7.7,files:2,url:"http://vocab.getty.edu/page/aat/{id}"},
+  lcsh:{name:"Library of Congress Subject Headings",short:"LCSH",n:275106,mb:26.8,files:4,url:"https://id.loc.gov/authorities/subjects/{id}.html"}
+};
+const VOC_ORDER = ["mesh","scr","ncit","hpo","eric","unesco","elsst","eurovoc","stw","agrovoc","gemet","nasa","aat","lcsh"];
+const AREA_VOC = {salud:{def:["mesh"],opt:["scr","ncit","hpo"]}, educacion:{def:["eric","unesco"],opt:["mesh"]}, sociales:{def:["elsst","unesco"],opt:["eurovoc","stw","mesh"]}, otras:{def:["nasa","gemet"],opt:["agrovoc","lcsh"]}, humanidades:{def:["unesco","aat"],opt:["lcsh"]}, derecho:{def:["eurovoc"],opt:["lcsh"]}};
+const AREA_DB = {salud:["pubmed","embase","cochrane","bvs","cinahl","psycinfo","scopus","wos","scielo"], educacion:["eric","psycinfo","scopus","wos","scielo","redalyc","dialnet"], sociales:["psycinfo","scopus","wos","scielo","redalyc","dialnet","jstor"], otras:["ieee","sciencedirect","scopus","wos","scielo"], humanidades:["jstor","scopus","wos","dialnet","scielo","redalyc"], derecho:["heinonline","dialnet","scopus","wos","scielo","redalyc"]};
+const DBS = {pubmed:{l:"PubMed",p:"PubMed (NLM)"}, embase:{l:"Embase",p:"Embase.com (Elsevier)"}, cochrane:{l:"Cochrane",p:"Cochrane Library (Wiley) · CENTRAL"}, bvs:{l:"BVS / LILACS",p:"BVS portal (BIREME) · LILACS"}, cinahl:{l:"CINAHL",p:"CINAHL (EBSCOhost)"}, psycinfo:{l:"APA PsycInfo",p:"APA PsycInfo (EBSCOhost)"}, eric:{l:"ERIC",p:"ERIC (EBSCOhost)"}, scopus:{l:"Scopus",p:"Scopus (Elsevier)"}, wos:{l:"Web of Science",p:"Web of Science Core Collection (Clarivate)"}, scielo:{l:"SciELO",p:"SciELO Search"}, redalyc:{l:"Redalyc",p:"Redalyc"}, dialnet:{l:"Dialnet",p:"Dialnet (Universidad de La Rioja)"}, jstor:{l:"JSTOR",p:"JSTOR"}, heinonline:{l:"HeinOnline",p:"HeinOnline"}, ieee:{l:"IEEE Xplore",p:"IEEE Xplore"}, sciencedirect:{l:"ScienceDirect",p:"ScienceDirect (Elsevier)"}};
+const DB_NOTES = {
+  pubmed:"No brackets or field tags: PubMed maps each phrase to its MeSH heading and to all fields through Automatic Term Mapping (check Advanced › Details). Apply article type, dates and language with the sidebar filters.",
+  scopus:"TITLE-ABS-KEY searches title, abstract and keywords. Scopus has no thesaurus of its own, so MeSH headings enter as text. Apply limits with the result filters.",
+  wos:"Paste each line into Advanced Search and combine them in the search history. TS= covers title, abstract, author keywords and Keywords Plus. Report the Core Collection indexes you selected.",
+  embase:"Embase uses single quotes. By default every term goes to :ti,ab,kw. With the Emtree option on, MeSH headings are proposed as 'term'/exp: confirm each one in the Emtree browser, because the preferred label can differ.",
+  cochrane:"For CENTRAL in the Cochrane Library (Search Manager). [mh \"…\"] explodes the MeSH heading; :ti,ab,kw searches title, abstract and keywords.",
+  bvs:"For the BVS portal (includes LILACS). mh: searches the DeCS/MeSH descriptor in any language; free terms in English and Spanish go as phrases. Filter the LILACS database in the interface.",
+  eric:"EBSCOhost syntax. DE searches ERIC descriptors; TI and AB search title and abstract. On eric.ed.gov use the same terms with descriptor:\"…\" instead of DE.",
+  cinahl:"EBSCOhost Advanced Search. TI and AB search title and abstract. CINAHL has its own thesaurus: open CINAHL Headings, find each concept and add it to the block as MH \"…\".",
+  psycinfo:"EBSCOhost syntax (adapt the fields in APA PsycNet or Ovid). Add the APA Thesaurus terms for each block as DE \"…\" in the interface.",
+  scielo:"For search.scielo.org in “All indexes”. Include Spanish and Portuguese terms, because SciELO indexes in several languages. Filter collection, year and language in the sidebar.",
+  redalyc:"For Redalyc advanced search. If the interface rejects a long string, run each block separately and combine the results in your reference manager.",
+  dialnet:"For Dialnet advanced search. Dialnet has limited operators: if nested parentheses fail, search each block separately and report the combination in PRISMA-S.",
+  jstor:"For JSTOR Advanced Search. ti: and ab: restrict to title and abstract; without them JSTOR searches full text and retrieves too much noise.",
+  heinonline:"For HeinOnline (Law Journal Library and other collections). It searches full text by default: use the Title or Abstract field in Advanced Search when you need precision.",
+  ieee:"For IEEE Xplore Command Search. \"All Metadata\" covers title, abstract and index terms. IEEE limits the number of terms per search: if the string is rejected, split the blocks.",
+  sciencedirect:"ScienceDirect accepts at most 8 Boolean operators per field. The builder flags the blocks that exceed it so you can split them into separate searches."
+};
+const SR_TERMS = [["Systematic Reviews as Topic","mesh","D000078202"],["Meta-Analysis as Topic","mesh","D015201"],["systematic review","free"],["systematic reviews","free"],["meta-analysis","free"],["meta-analyses","free"],["meta analysis","free"],["umbrella review","free"],["overview of reviews","free"],["revisión sistemática","es"],["metaanálisis","es"]];
+const MESH_CAT = {A:"Anatomy",B:"Organisms",C:"Diseases",D:"Chemicals and drugs",E:"Techniques and equipment",F:"Psychiatry and psychology",G:"Phenomena and processes",H:"Disciplines and occupations",I:"Anthropology, education, sociology",J:"Technology, industry, agriculture",K:"Humanities",L:"Information science",M:"Named groups",N:"Health care",V:"Publication characteristics",Z:"Geographicals"};
+const SCR_CLASS = {1:"Chemical or drug",2:"Protocol",3:"Rare disease",4:"Organism",5:"Population group",6:"Anatomy"};
+const TLAB = {mesh:"MeSH",scr:"SCR",eric:"ERIC",es:"ES",free:"EN"};
+const vnorm = s => String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[-,/()]/g," ").replace(/\s+/g," ").trim();
+const meshPad = n => "D" + String(n).padStart(6, "0");
+
+/* ---------- terms model ---------- */
+function ensureSearchState(){
+  const s = S.search;
+  if (!s.terms || typeof s.terms !== "object") s.terms = {};
+  if (!s.opts || typeof s.opts !== "object") s.opts = {esIntl:false, emtree:false};
+  if (!Array.isArray(s.vocsOn)) s.vocsOn = null;
+  const parse = line => { const m = line.match(/^(MeSH|SCR|ERIC|ES|EN)\s*:\s*(.+)$/i); if (m) { const k = m[1].toLowerCase(); return {t:m[2].trim(), k:k === "en" ? "free" : k, ui:""}; } const v = line.match(/^([A-Za-z]+)\s*:\s*(.+)$/); if (v && VOCABS[v[1].toLowerCase()]) return {t:v[2].trim(), k:"voc", v:v[1].toLowerCase(), ui:""}; return {t:line.replace(/^["'“”]+|["'“”]+$/g,"").trim(), k:"free", ui:""}; };
+  Object.keys(s.blocks || {}).forEach(k => { if (!s.terms[k] && String(s.blocks[k] || "").trim()) s.terms[k] = String(s.blocks[k]).split(/\n+/).map(x => x.trim()).filter(Boolean).map(parse); });
+  if (!s.terms._design) s.terms._design = (s.design && s.design.trim()) ? s.design.split(/\n+/).map(x => x.trim()).filter(Boolean).map(parse) : SR_TERMS.map(t => ({t:t[0], k:t[1], ui:t[2] || ""}));
+}
+function blockDefs(){
+  const b = searchComps().map(([k,l]) => ({key:k, label:l}));
+  if (T().disenoBloque) b.push({key:"_design", label:"Study design (reviews)"});
   return b;
 }
+function activeBlocks(){ ensureSearchState(); return blockDefs().map(b => { const items = S.search.terms[b.key] || []; return {...b, items, terms:items.map(x => x.t)}; }); }
 function termIssues(t){
   const out = [];
   if (/[\[\]]/.test(t)) out.push(["bad","Field tags in brackets: apply limits with the interface filters."]);
   if (/[*?$#~]/.test(t)) out.push(["bad","Truncation or wildcard: write each variant in full (singular and plural)."]);
   if (/\b(AND|OR|NOT)\b/.test(t)) out.push(["bad","Operator inside a term: do not recompose concepts; use the exact compound variant."]);
-  if (/[()]/.test(t)) out.push(["warn","Parentheses inside the term."]);
   return out;
 }
-function searchViolations(){ let bad = 0, warn = 0; activeBlocks().forEach(b => b.terms.forEach(t => termIssues(t).forEach(i => i[0] === "bad" ? bad++ : warn++))); return {bad, warn}; }
-const DBS = {
-  pubmed:{l:"PubMed", f:b => "(" + b.map(x => '"' + x + '"').join(" OR ") + ")", j:"\nAND\n", n:"No field tags: PubMed searches all fields with its automatic term mapping. Years, language and article type are set in the filters."},
-  scopus:{l:"Scopus", f:b => "TITLE-ABS-KEY(" + b.map(x => '"' + x + '"').join(" OR ") + ")", j:"\nAND\n", n:"TITLE-ABS-KEY searches title, abstract and keywords. Limits are applied with the interface filters."},
-  wos:{l:"Web of Science", f:b => "TS=(" + b.map(x => '"' + x + '"').join(" OR ") + ")", j:"\nAND\n", n:"TS= (Topic) searches title, abstract and keywords. Report the Core Collection editions searched."},
-  embase:{l:"Embase", f:b => "(" + b.map(x => "'" + x + "':ti,ab,kw").join(" OR ") + ")", j:"\nAND\n", n:"Embase.com (Elsevier) syntax. To include Emtree, add each descriptor as an exact term in its block."},
-  ebsco:{l:"EBSCOhost", f:b => { const l = b.map(x => '"' + x + '"').join(" OR "); return "(TI (" + l + ") OR AB (" + l + "))"; }, j:"\nAND\n", n:"For ERIC, APA PsycInfo, CINAHL or Education Source on EBSCOhost. TI and AB restrict to title and abstract."},
-  bvs:{l:"BVS / LILACS", f:b => "(tw:(" + b.map(x => '"' + x + '"').join(" OR ") + "))", j:"\nAND\n", n:"For LILACS on the BVS portal. tw searches title, abstract and descriptors. Add the Spanish and Portuguese terms to the block."}
-};
-function formulaFor(db){ const d = DBS[db], b = activeBlocks().filter(x => x.terms.length); return b.length ? b.map(x => d.f(x.terms)).join(d.j) : "(Write terms in the blocks.)"; }
-function renderBlocks(){
-  const blocks = activeBlocks();
-  $("#blocks").innerHTML = blocks.length ? blocks.map((b,i) => `${i ? '<div class="and">AND</div>' : ""}<div class="block"><h4><span class="pill brand">${esc(b.key === "_design" ? "D" : b.key)}</span>${esc(b.label)}<span class="msg" style="font-weight:400">${esc(b.key === "_design" ? "Umbrella design block" : (S.p.comp[b.key] || ""))}</span></h4>
-     <div class="field" style="margin-top:8px"><label for="bk-${b.key}" class="hint">One term per line · combined with OR</label><textarea id="bk-${b.key}" rows="5" data-block="${b.key}">${esc(b.key === "_design" ? (S.search.design || DESIGN_DEFAULT) : (S.search.blocks[b.key] || ""))}</textarea></div></div>`).join("")
-   : '<p class="msg">Define the question components in tab 01 and tick “search” on those that will be blocks.</p>';
+function searchViolations(){ let bad = 0, warn = 0; activeBlocks().forEach(b => b.items.forEach(x => termIssues(x.t).forEach(i => i[0] === "bad" ? bad++ : warn++))); return {bad, warn}; }
+function cleanTerm(s){ return String(s).replace(/[“”"]/g,"").replace(/[\[\]{}]/g,"").replace(/[*?$#]/g,"").replace(/\s+/g," ").trim(); }
+function addTerm(k, t, kind, ui, v){
+  ensureSearchState(); t = cleanTerm(t); if (!t) return false;
+  const arr = S.search.terms[k] || (S.search.terms[k] = []);
+  if (arr.some(x => x.t.toLowerCase() === t.toLowerCase() && x.k === kind)) return false;
+  const o = {t, k:kind, ui:ui || ""}; if (v) o.v = v; arr.push(o); return true;
 }
-$("#blocks").addEventListener("input", e => { const k = e.target.dataset.block; if (!k) return; if (k === "_design") S.search.design = e.target.value; else S.search.blocks[k] = e.target.value; save(); renderSearch(); renderChain(); });
-function renderSearch(){
-  const db = S.search.db || "pubmed";
-  $("#dbseg").innerHTML = Object.entries(DBS).map(([k,d]) => `<button type="button" data-db="${k}" aria-pressed="${k===db}">${esc(d.l)}</button>`).join("");
-  $("#formula").textContent = formulaFor(db);
-  $("#dbnote").textContent = DBS[db].n;
-  const blocks = activeBlocks(), items = [];
-  const exp = searchComps().length + (T().disenoBloque ? 1 : 0);
-  items.push([blocks.filter(b => b.terms.length).length === exp ? "ok" : "bad", "Blocks with terms: " + blocks.filter(b => b.terms.length).length + " of " + exp + " expected (one per ticked component" + (T().disenoBloque ? ", plus design" : "") + ")."]);
-  blocks.forEach(b => {
-    if (!b.terms.length) items.push(["bad","The block “" + b.label + "” is empty."]);
-    else if (b.terms.length < 2) items.push(["warn","The block “" + b.label + "” has only one term: add synonyms and full variants."]);
-    const seen = new Set();
-    b.terms.forEach(t => { termIssues(t).forEach(i => items.push([i[0], "“" + t + "”: " + i[1]])); const k = t.toLowerCase(); if (seen.has(k)) items.push(["warn","“" + t + "” is repeated in the block."]); seen.add(k); });
+
+/* ---------- vocabulary loading and index ---------- */
+let MD = null, ED = null, SD = null, IDXM = null, IDXE = null, IDXS = null, BYUI = null, TREE = null, KIDS = null, EBYNAME = null;
+const VDATA = {}, VIDX = {}, VSTATE = {}, VLAB = {};
+function areaVocs(){ const a = AREA_VOC[S.p.area] || AREA_VOC.salud; return a; }
+function activeVocs(){ const a = areaVocs(); const on = S.search.vocsOn || a.def; return VOC_ORDER.filter(v => on.includes(v)); }
+function vocFiles(v){ const V = VOCABS[v]; return Array.isArray(V.files) ? V.files : Array.from({length:V.files}, (_,i) => "voc/" + v + "-" + (i+1) + ".js"); }
+function parseDataFile(txt){ const a = txt.indexOf("[["), b = txt.lastIndexOf("]]"); if (a < 0 || b < a) throw new Error("bad data file"); return JSON.parse(txt.slice(a, b + 2)); }
+function fetchRows(f){ return fetch(new URL(f, document.baseURI).href).then(r => { if (!r.ok) throw new Error(r.status); return r.text(); }).then(parseDataFile); }
+function scriptRows(f, v){
+  return new Promise((ok, ko) => {
+    const before = v === "scr" ? (window.SCR_PARTS || []).length : ((window.VOC_PARTS || {})[v] || []).length;
+    const s = document.createElement("script"); s.src = f; s.async = true;
+    s.onload = () => { try {
+      if (v === "mesh") ok(window.MESH_DATA); else if (v === "eric") ok(window.ERIC_DATA);
+      else if (v === "scr") ok(window.SCR_PARTS[before]); else ok(window.VOC_PARTS[v][before]);
+    } catch(e){ ko(e); } };
+    s.onerror = () => ko(new Error("script"));
+    document.head.appendChild(s);
   });
-  if (blocks.length && items.length === 1 && items[0][0] === "ok") items.push(["ok","All terms are complete, exact and free of field tags."]);
+}
+const VPROG = {};
+async function loadVoc(v){
+  if (VSTATE[v]) return;
+  VSTATE[v] = "loading"; VPROG[v] = 0; renderVocList();
+  const files = vocFiles(v), parts = [];
+  try {
+    for (const f of files) {
+      let rows; try { rows = await fetchRows(f); } catch(e){ rows = await scriptRows(f, v); }
+      if (!Array.isArray(rows) || !rows.length) throw new Error("empty");
+      parts.push(rows); VPROG[v]++; renderVocList();
+    }
+    if (v === "mesh") window.MESH_DATA = parts[0];
+    else if (v === "eric") window.ERIC_DATA = parts[0];
+    else if (v === "scr") window.SCR_PARTS = parts;
+    else { window.VOC_PARTS = window.VOC_PARTS || {}; window.VOC_PARTS[v] = parts; }
+    buildVoc(v); VSTATE[v] = "ready";
+  } catch(e){ VSTATE[v] = "error"; }
+  renderVocList(); refreshOpenSearches();
+}
+function buildVoc(v){
+  if (v === "mesh") {
+    MD = window.MESH_DATA; if (!MD) throw 0; BYUI = new Map(); TREE = new Map(); const texts = [], ref = [], kind = [];
+    MD.forEach((r,i) => { BYUI.set(r[0], i); texts.push(vnorm(r[1])); ref.push(i); kind.push(0);
+      if (r[2]) for (const t of r[2].split(";")) TREE.set(t, i);
+      if (r[3]) for (const e of r[3].split("|")) { texts.push(vnorm(e.replace(/^[\^$]/,""))); ref.push(i); kind.push(1); }
+      if (r[4]) for (const e of r[4].split("|")) { texts.push(vnorm(e)); ref.push(i); kind.push(2); } });
+    IDXM = {texts, ref, kind}; return;
+  }
+  if (v === "eric") {
+    ED = window.ERIC_DATA; if (!ED) throw 0; EBYNAME = new Map(); const texts = [], ref = [], kind = [];
+    ED.forEach((r,j) => { EBYNAME.set(r[0], j); texts.push(vnorm(r[0])); ref.push(j); kind.push(3); if (r[2]) for (const u of r[2].split("|")) { texts.push(vnorm(u)); ref.push(j); kind.push(4); } });
+    IDXE = {texts, ref, kind}; return;
+  }
+  if (v === "scr") {
+    SD = [].concat(...(window.SCR_PARTS || [])); window.SCR_PARTS = null; if (!SD.length) throw 0; const texts = [], ref = [], kind = [];
+    SD.forEach((r,s) => { texts.push(vnorm(r[1])); ref.push(s); kind.push(5); if (r[4]) for (const e of r[4].split("|")) { texts.push(vnorm(e)); ref.push(s); kind.push(6); } if (r[5]) for (const e of r[5].split("|")) { texts.push(vnorm(e)); ref.push(s); kind.push(7); } });
+    IDXS = {texts, ref, kind}; return;
+  }
+  const parts = (window.VOC_PARTS && window.VOC_PARTS[v]) || [], rows = [].concat(...parts); if (window.VOC_PARTS) delete window.VOC_PARTS[v]; if (!rows.length) throw 0;
+  const texts = [], ref = [], kind = [];
+  rows.forEach((r,i) => { if (r[1]) { texts.push(vnorm(r[1])); ref.push(i); kind.push(0); } if (r[3]) for (const e of r[3].split("|")) { texts.push(vnorm(e)); ref.push(i); kind.push(1); } if (r[2]) { texts.push(vnorm(r[2])); ref.push(i); kind.push(2); } if (r[4]) for (const e of r[4].split("|")) { texts.push(vnorm(e)); ref.push(i); kind.push(3); } });
+  VDATA[v] = rows; VIDX[v] = {texts, ref, kind};
+}
+function ensureVocs(){ activeVocs().forEach(loadVoc); }
+function vocLabelIndex(v){ if (!VLAB[v]) { const m = new Map(); VDATA[v].forEach((r,i) => { if (r[1] && !m.has(vnorm(r[1]))) m.set(vnorm(r[1]), i); if (r[2] && !m.has(vnorm(r[2]))) m.set(vnorm(r[2]), i); }); VLAB[v] = m; } return VLAB[v]; }
+function kidsOf(i){
+  if (!KIDS) { KIDS = new Map(); for (const [t,j] of TREE) { const p = t.lastIndexOf("."); if (p < 0) continue; const pt = t.slice(0,p); if (!KIDS.has(pt)) KIDS.set(pt, new Set()); KIDS.get(pt).add(j); } }
+  const out = new Set(), r = MD[i]; if (!r[2]) return [];
+  for (const t of r[2].split(";")) { const s = KIDS.get(t); if (s) s.forEach(j => out.add(j)); }
+  return [...out].map(j => MD[j]).sort((a,b) => a[1].localeCompare(b[1]));
+}
+const KB = [14,0,8,12,4,1,-4,0], VKB = [11,1,10,3];
+function scan(ix, nq, words, best, tag, kb){
+  const {texts, ref, kind} = ix;
+  for (let i = 0; i < texts.length; i++) {
+    const t = texts[i]; const pos = t.indexOf(nq); let sc;
+    if (pos < 0) { if (words.length < 2) continue; let ok = true; for (const w of words) { if (!t.includes(w)) { ok = false; break; } } if (!ok) continue; sc = 12; }
+    else sc = t === nq ? 100 : pos === 0 ? 70 : t[pos-1] === " " ? 48 : 22;
+    sc += kb[kind[i]] - Math.min(t.length, 120) * 0.06;
+    const key = tag + "|" + ref[i], cur = best.get(key);
+    if (!cur || sc > cur.sc) best.set(key, {sc, kind:kind[i], t});
+  }
+}
+function searchVocabs(q){
+  const nq = vnorm(q); if (nq.length < 2) return [];
+  const words = nq.split(" ").filter(Boolean), best = new Map();
+  activeVocs().forEach(v => {
+    if (VSTATE[v] !== "ready") return;
+    if (v === "mesh") scan(IDXM, nq, words, best, "mesh", KB);
+    else if (v === "eric") scan(IDXE, nq, words, best, "eric", KB);
+    else if (v === "scr") { if (nq.length >= 3) scan(IDXS, nq, words, best, "scr", KB); }
+    else scan(VIDX[v], nq, words, best, v, VKB);
+  });
+  const all = [...best.entries()].map(([key,v]) => { const p = key.lastIndexOf("|"); return {src:key.slice(0,p), i:+key.slice(p+1), kind:v.kind, nt:v.t, sc:v.sc}; });
+  const out = []; VOC_ORDER.forEach(v => { const g = all.filter(r => r.src === v).sort((a,b) => b.sc - a.sc); out.push(...g.slice(0, v === "mesh" || v === "eric" ? 8 : 5)); });
+  return out;
+}
+function matchedText(r){
+  const nt = r.nt; let pool = [];
+  if (r.src === "mesh") { const d = MD[r.i]; if (vnorm(d[1]) === nt) return null; pool = [...(d[3] ? d[3].split("|").map(e => e.replace(/^[\^$]/,"")) : []), ...(d[4] ? d[4].split("|") : [])]; }
+  else if (r.src === "eric") { const d = ED[r.i]; if (vnorm(d[0]) === nt) return null; pool = d[2] ? d[2].split("|") : []; }
+  else if (r.src === "scr") { const d = SD[r.i]; if (vnorm(d[1]) === nt) return null; pool = [...(d[4] ? d[4].split("|") : []), ...(d[5] ? d[5].split("|") : [])]; }
+  else { const d = VDATA[r.src][r.i]; if (d[1] && vnorm(d[1]) === nt) return null; pool = [d[2], ...(d[3] ? d[3].split("|") : []), ...(d[4] ? d[4].split("|") : [])].filter(Boolean); }
+  return pool.find(p => vnorm(p) === nt) || null;
+}
+
+/* ---------- UI ---------- */
+const openDetail = {}, lastResults = {};
+function renderVocList(){
+  const el = $("#voclist"); if (!el) return;
+  const a = areaVocs(), on = activeVocs(), rec = [...a.def, ...a.opt];
+  const row = v => { const V = VOCABS[v], s = VSTATE[v], n = vocFiles(v).length;
+    const st = !on.includes(v) || !s ? "" : s === "ready" ? "ready" : s === "error" ? "not found" : "loading " + (VPROG[v] || 0) + "/" + n;
+    return `<label class="voc"><input type="checkbox" data-voc="${v}" ${on.includes(v) ? "checked" : ""}><span><b>${esc(V.short)}</b> · ${esc(V.name)}<small>${V.n.toLocaleString("en-US")} concepts · ${V.mb} MB${a.def.includes(v) ? " · default for this area" : ""}</small></span><span class="vst ${s || ""}">${st}</span></label>`; };
+  const others = VOC_ORDER.filter(v => !rec.includes(v)), op = el.querySelector("details") ? el.querySelector("details").open : others.some(v => on.includes(v));
+  el.innerHTML = `<div class="hint" style="margin:2px 0 4px">Recommended for ${esc((AREAS[S.p.area] || {}).label || "this area")}</div>` + VOC_ORDER.filter(v => rec.includes(v)).map(row).join("")
+    + `<details style="margin-top:8px" ${op ? "open" : ""}><summary style="cursor:pointer;font-weight:600;font-size:13.5px">All other thesauri (${others.length})</summary>${others.map(row).join("")}</details>`
+    + `<div class="row" style="margin-top:8px"><button class="btn small" type="button" id="vocall">Activate all 14 thesauri</button><button class="btn small" type="button" id="vocdef">Area defaults</button></div>`;
+  const errs = on.filter(v => VSTATE[v] === "error");
+  $("#vocnote").textContent = errs.length ? "Could not read the data files of " + errs.map(v => VOCABS[v].short).join(", ") + ". If you opened a downloaded copy, keep it inside the Tau Strategy Builder folder (next to mesh-data.js, eric-data.js, scr-data-*.js and voc/). Free terms and all syntaxes still work." : "Search a block to look up descriptors, entry terms and Spanish equivalents in every active thesaurus. Large thesauri (SCR, NCIt, LCSH) take a few seconds to load the first time.";
+}
+$("#voclist").addEventListener("click", e => {
+  if (e.target.id === "vocall") { S.search.vocsOn = VOC_ORDER.slice(); save(); ensureVocs(); renderVocList(); }
+  if (e.target.id === "vocdef") { S.search.vocsOn = null; save(); ensureVocs(); renderVocList(); refreshOpenSearches(); }
+});
+$("#voclist").addEventListener("change", e => {
+  const v = e.target.dataset.voc; if (!v) return;
+  const cur = new Set(activeVocs()); if (e.target.checked && VSTATE[v] === "error") delete VSTATE[v]; e.target.checked ? cur.add(v) : cur.delete(v);
+  S.search.vocsOn = VOC_ORDER.filter(x => cur.has(x)); save(); ensureVocs(); renderVocList(); refreshOpenSearches();
+});
+function refreshOpenSearches(){ blockDefs().forEach(b => { const inp = document.getElementById("vs-" + b.key); if (inp && inp.value.trim().length >= 2) renderResults(b.key, inp.value); }); }
+function renderBlocks(){
+  ensureSearchState();
+  const defs = blockDefs();
+  $("#blocks").innerHTML = defs.length ? defs.map((b,i) => `${i ? '<div class="and">AND</div>' : ""}<div class="block" data-k="${esc(b.key)}">
+    <h4><span class="pill brand">${esc(b.key === "_design" ? "D" : b.key)}</span>${esc(b.label)}<span class="msg" style="font-weight:400">${esc(b.key === "_design" ? "Study design block for umbrella reviews" : (S.p.comp[b.key] || ""))}</span></h4>
+    <input type="search" id="vs-${esc(b.key)}" data-act="search" placeholder="Look up a descriptor (e.g. ${b.key === "O" ? "depression, anxiety" : b.key === "P" ? "older adults, adolescents" : "exercise, probiotics"})" autocomplete="off" style="margin-top:8px" aria-label="Thesaurus look-up for ${esc(b.label)}">
+    <div data-slot="results"></div><div data-slot="detail"></div>
+    <div class="freerow"><input type="text" id="vf-${esc(b.key)}" data-act="free" placeholder="Add an exact free term (Enter)" aria-label="Free term"><select id="vk-${esc(b.key)}" aria-label="Term type"><option value="free">EN free text</option><option value="es">ES / DeCS</option><option value="mesh">MeSH</option><option value="scr">SCR</option><option value="eric">ERIC</option></select><button class="btn small" type="button" data-act="addfree">Add</button></div>
+    <div class="termchips" data-slot="terms"></div></div>`).join("")
+   : '<p class="msg">Define the question components in tab 01 and tick “search” on those that will be blocks.</p>';
+  defs.forEach(b => { renderTerms(b.key); renderDetail(b.key); });
+}
+const bcard = k => document.querySelector(`.block[data-k="${CSS.escape(k)}"]`);
+function renderTerms(k){
+  const el = bcard(k) && bcard(k).querySelector('[data-slot="terms"]'); if (!el) return;
+  const arr = S.search.terms[k] || [];
+  if (!arr.length) { el.innerHTML = '<span class="msg">No terms yet. Look up a descriptor or type a free term.</span>'; return; }
+  const order = {mesh:0, scr:1, eric:2, voc:3, free:4, es:5};
+  el.innerHTML = arr.map((t,i) => ({t,i})).sort((a,b) => order[a.t.k] - order[b.t.k]).map(({t,i}) => `<span class="chip ${t.k}"><i>${esc(t.k === "voc" && VOCABS[t.v] ? VOCABS[t.v].short : (TLAB[t.k] || "EN"))}</i><span>${esc(t.t)}</span><button type="button" data-act="rm" data-i="${i}" aria-label="Remove ${esc(t.t)}">×</button></span>`).join("");
+}
+function renderResults(k, q){
+  const el = bcard(k) && bcard(k).querySelector('[data-slot="results"]'); if (!el) return;
+  if (!q || q.trim().length < 2) { el.innerHTML = ""; return; }
+  const list = searchVocabs(q); lastResults[k] = list;
+  const loading = activeVocs().filter(v => VSTATE[v] === "loading").map(v => VOCABS[v].short);
+  const rows = list.map((r,j) => {
+    const via = matchedText(r);
+    if (r.src === "mesh") { const d = MD[r.i], cat = d[2] ? [...new Set(d[2].split(";").map(t => t[0]))].map(l => MESH_CAT[l] || l).join(" · ") : "", es = d[4] ? d[4].split("|")[0] : "";
+      return `<button type="button" class="res" data-act="pick" data-j="${j}"><span><span class="nm">${esc(d[1])}</span><span class="via">${via ? "via “" + esc(via) + "” · " : ""}${es ? "ES: " + esc(es) + " · " : ""}${esc(cat)}</span></span><span class="src mesh">MeSH</span></button>`; }
+    if (r.src === "eric") { const d = ED[r.i]; return `<button type="button" class="res" data-act="pick" data-j="${j}"><span><span class="nm">${esc(d[0])}</span><span class="via">${via ? "via “" + esc(via) + "” · " : ""}${esc(d[6] || "ERIC descriptor")}</span></span><span class="src eric">ERIC</span></button>`; }
+    if (r.src === "scr") { const d = SD[r.i]; return `<button type="button" class="res" data-act="pick" data-j="${j}"><span><span class="nm">${esc(d[1])}</span><span class="via">${via ? "via “" + esc(via) + "” · " : ""}${esc(SCR_CLASS[d[2]] || "")}</span></span><span class="src scr">SCR</span></button>`; }
+    const d = VDATA[r.src][r.i]; return `<button type="button" class="res" data-act="pick" data-j="${j}"><span><span class="nm">${esc(d[1] || d[2])}</span><span class="via">${via ? "via “" + esc(via) + "” · " : ""}${d[1] && d[2] ? "ES: " + esc(d[2]) : ""}</span></span><span class="src voc">${esc(VOCABS[r.src].short)}</span></button>`;
+  }).join("");
+  el.innerHTML = `<div class="results">${rows || '<div class="resfoot">No match in the active thesauri.</div>'}<div class="resfoot"><span>${list.length ? list.length + " results" : ""}${loading.length ? " · loading " + loading.join(", ") + "…" : ""}</span><span class="row" style="gap:10px"><a href="https://meshb.nlm.nih.gov/search?searchInField=allTerms&q=${encodeURIComponent(q)}" target="_blank" rel="noopener">MeSH Browser</a><a href="https://decs.bvsalud.org/en/ths/?filter=ths_termall&q=${encodeURIComponent(q)}" target="_blank" rel="noopener">DeCS</a></span></div></div>`;
+}
+function ck(attr, arr, def){ return arr.length ? `<div class="checksgrid">${arr.map(u => `<label class="ckb"><input type="checkbox" ${attr}="${esc(u)}" ${def(u) ? "checked" : ""}>${esc(u)}</label>`).join("")}</div>` : ""; }
+function renderDetail(k){
+  const el = bcard(k) && bcard(k).querySelector('[data-slot="detail"]'); if (!el) return;
+  const od = openDetail[k]; if (!od) { el.innerHTML = ""; return; }
+  const sp = s => s ? s.split("|") : [], plain = u => !/, /.test(u);
+  const btns = `<div class="row" style="margin-top:10px"><button class="btn primary small" type="button" data-act="adddet">Add descriptor + selected</button><button class="btn small" type="button" data-act="addsel">Selected only</button><button class="btn small" type="button" data-act="closedet">Close</button></div>`;
+  const nav = (lab, arr, act, extra = "") => arr.length ? `<div class="lbl">${lab} (${arr.length})</div><div class="kids">${arr.slice(0,40).map(x => `<button type="button" class="kid" data-act="${act}" ${extra} data-name="${esc(x)}">${esc(String(x).replace(/^<|>$/g,""))}</button>`).join("")}</div>` : "";
+  let h = "";
+  if (od.src === "mesh") {
+    const r = MD[od.i], ui = meshPad(r[0]), trees = r[2] ? r[2].split(";") : [], ents = sp(r[3]).map(e => ({t:e.replace(/^[\^$]/,""), acr:e[0] === "^", trd:e[0] === "$"})), es = sp(r[4]), kids = kidsOf(od.i);
+    h = `<div class="eyebrow">MeSH 2026 descriptor</div><h3>${esc(r[1])}</h3><div class="meta"><span>${esc(ui)}</span>${trees.slice(0,6).map(t => `<span>${esc(t)}${MESH_CAT[t[0]] ? " · " + esc(MESH_CAT[t[0]]) : ""}</span>`).join("")}</div>
+      ${ents.length ? `<div class="lbl">Entry terms → English free terms</div><div class="checksgrid">${ents.filter(e => plain(e.t)).map(e => `<label class="ckb"><input type="checkbox" data-ent="${esc(e.t)}" ${e.trd ? "" : "checked"}>${esc(e.t)}${e.acr ? " <em>acronym</em>" : ""}${e.trd ? " <em>brand</em>" : ""}</label>`).join("")}</div>` : ""}
+      <div class="lbl">Spanish equivalents → BVS/LILACS, SciELO</div>${ck("data-es", es, () => true) || '<p class="msg">No local Spanish equivalent. Check DeCS.</p>'}
+      ${kids.length ? `<div class="lbl">Narrower descriptors (${kids.length}); the MeSH heading explodes to them</div><div class="kids">${kids.slice(0,40).map(x => `<button type="button" class="kid" data-act="kid" data-ui="${x[0]}">${esc(x[1])}</button>`).join("")}</div>` : ""}
+      <div class="links"><a href="https://meshb.nlm.nih.gov/record/ui?ui=${esc(ui)}" target="_blank" rel="noopener">MeSH Browser</a><a href="https://decs.bvsalud.org/en/ths/?filter=ths_regid&q=${esc(ui)}" target="_blank" rel="noopener">DeCS record</a></div>`;
+  } else if (od.src === "eric") {
+    const d = ED[od.i];
+    h = `<div class="eyebrow">ERIC Thesaurus 2025${d[6] ? " · " + esc(d[6]) : ""}</div><h3>${esc(d[0])}</h3>${d[1] ? `<div class="scope">${esc(d[1])}</div>` : ""}
+      ${sp(d[2]).length ? `<div class="lbl">Use For (synonyms) → English free terms</div>${ck("data-ent", sp(d[2]), () => true)}` : ""}
+      ${nav("Broader term (BT)", sp(d[3]), "ericnav")}${nav("Narrower terms (NT)", sp(d[4]), "ericnav")}${nav("Related terms (RT)", sp(d[5]), "ericnav")}
+      <p class="msg">In ERIC (EBSCO) it is searched as DE "${esc(d[0])}"; in other databases it enters as a free term.</p><div class="links"><a href="https://eric.ed.gov/?ti=${encodeURIComponent(d[0])}" target="_blank" rel="noopener">Open in ERIC Thesaurus</a></div>`;
+  } else if (od.src === "scr") {
+    const d = SD[od.i], maps = d[3] ? d[3].split(";").map(n => BYUI && BYUI.get(+n)).filter(i => i != null) : [];
+    h = `<div class="eyebrow">MeSH supplementary concept (SCR) · ${esc(SCR_CLASS[d[2]] || "")}</div><h3>${esc(d[1])}</h3><div class="meta"><span>${esc(d[0])}</span></div>
+      ${sp(d[4]).length ? `<div class="lbl">Synonyms → English free terms</div>${ck("data-ent", sp(d[4]), plain)}` : ""}
+      ${sp(d[5]).length ? `<div class="lbl">Spanish equivalents → BVS/LILACS</div>${ck("data-es", sp(d[5]), () => true)}` : ""}
+      ${maps.length ? `<div class="lbl">Mapped to MeSH descriptors (open to add them)</div><div class="kids">${maps.map(i => `<button type="button" class="kid" data-act="kid" data-ui="${MD[i][0]}">${esc(MD[i][1])}</button>`).join("")}</div>` : ""}
+      <p class="msg">PubMed maps the concept name to its supplementary concept and linked descriptors. In other databases it enters as free text.</p><div class="links"><a href="https://meshb.nlm.nih.gov/record/ui?ui=${esc(d[0])}" target="_blank" rel="noopener">MeSH Browser</a></div>`;
+  } else {
+    const V = VOCABS[od.src], d = VDATA[od.src][od.i], aen = sp(d[3]), es = [d[2], ...sp(d[4])].filter(Boolean), link = V.url ? V.url.replace("{id}", encodeURIComponent(d[0])) : "";
+    h = `<div class="eyebrow">${esc(V.name)}</div><h3>${esc(d[1] || d[2])}</h3><div class="meta"><span>${esc(d[0])}</span>${d[1] && d[2] ? `<span>ES: ${esc(d[2])}</span>` : ""}</div>${d[7] ? `<div class="scope">${esc(d[7])}</div>` : ""}
+      ${aen.length ? `<div class="lbl">Synonyms and variants → English free terms</div>${ck("data-ent", aen, plain)}` : ""}
+      ${es.length ? `<div class="lbl">Spanish terms → SciELO, Redalyc, Dialnet, BVS</div>${ck("data-es", es, () => true)}` : ""}
+      ${nav("Broader term (BT)", sp(d[5]), "vocnav", `data-v="${od.src}"`)}${nav("Narrower terms (NT)", sp(d[6]), "vocnav", `data-v="${od.src}"`)}
+      <p class="msg">${esc(V.short)} is not the indexing thesaurus of the bibliographic databases, so its terms enter every database as exact free text.</p>${link ? `<div class="links"><a href="${esc(link)}" target="_blank" rel="noopener">View in ${esc(V.short)}</a></div>` : ""}`;
+  }
+  el.innerHTML = `<div class="vdetail">${h}${btns}</div>`;
+}
+let searchTimer = {};
+$("#blocks").addEventListener("input", e => { const c = e.target.closest(".block"); if (!c || e.target.dataset.act !== "search") return; const k = c.dataset.k, q = e.target.value; ensureVocs(); clearTimeout(searchTimer[k]); searchTimer[k] = setTimeout(() => renderResults(k, q), 140); });
+$("#blocks").addEventListener("keydown", e => {
+  if (e.key !== "Enter") return; const c = e.target.closest(".block"); if (!c) return; const k = c.dataset.k;
+  if (e.target.dataset.act === "free") { e.preventDefault(); addFree(k); }
+  if (e.target.dataset.act === "search") { e.preventDefault(); const b = c.querySelector('[data-act="pick"]'); if (b) b.click(); }
+});
+function addFree(k){
+  const inp = document.getElementById("vf-" + k), kind = document.getElementById("vk-" + k).value;
+  const raw = inp.value; if (/[*?$#]/.test(raw)) $("#fmsg").textContent = "Truncation removed: write terms in full.";
+  inp.value.split(/\s+OR\s+|;|\n/i).map(s => s.trim()).filter(Boolean).forEach(p => addTerm(k, p, kind));
+  inp.value = ""; renderTerms(k); searchChanged();
+}
+$("#blocks").addEventListener("click", e => {
+  const btn = e.target.closest("[data-act]"); if (!btn) return; const c = btn.closest(".block"); if (!c) return; const k = c.dataset.k, act = btn.dataset.act;
+  if (act === "rm") { S.search.terms[k].splice(+btn.dataset.i, 1); renderTerms(k); searchChanged(); }
+  else if (act === "addfree") addFree(k);
+  else if (act === "pick") { const r = lastResults[k][+btn.dataset.j]; openDetail[k] = {src:r.src, i:r.i}; renderDetail(k); }
+  else if (act === "kid") { const i = BYUI && BYUI.get(+btn.dataset.ui); if (i != null) { openDetail[k] = {src:"mesh", i}; renderDetail(k); } }
+  else if (act === "ericnav") { const j = EBYNAME && EBYNAME.get(btn.dataset.name); if (j != null) { openDetail[k] = {src:"eric", i:j}; renderDetail(k); } }
+  else if (act === "vocnav") { const v = btn.dataset.v, i = vocLabelIndex(v).get(vnorm(btn.dataset.name)); if (i != null) { openDetail[k] = {src:v, i}; renderDetail(k); } }
+  else if (act === "closedet") { openDetail[k] = null; renderDetail(k); }
+  else if (act === "adddet" || act === "addsel") {
+    const od = openDetail[k]; if (!od) return; let n = 0;
+    if (act === "adddet") {
+      if (od.src === "mesh") { if (addTerm(k, MD[od.i][1], "mesh", meshPad(MD[od.i][0]))) n++; }
+      else if (od.src === "eric") { if (addTerm(k, ED[od.i][0], "eric")) n++; }
+      else if (od.src === "scr") { if (addTerm(k, SD[od.i][1], "scr", SD[od.i][0])) n++; }
+      else { const d = VDATA[od.src][od.i]; if (addTerm(k, d[1] || d[2], d[1] ? "voc" : "es", d[0], od.src)) n++; }
+    }
+    c.querySelectorAll("[data-ent]:checked").forEach(x => { if (addTerm(k, x.dataset.ent, "free")) n++; });
+    c.querySelectorAll("[data-es]:checked").forEach(x => { if (addTerm(k, x.dataset.es, "es")) n++; });
+    openDetail[k] = null; renderDetail(k); renderTerms(k); searchChanged();
+    $("#fmsg").textContent = n + " terms added to block " + (k === "_design" ? "D" : k) + "."; $("#fmsg").className = "msg okk";
+  }
+});
+
+/* ---------- syntax builders ---------- */
+const isPhrase = t => /[\s\-\/,.:;()'&+]/.test(t);
+const dq = t => isPhrase(t) ? `"${t.replace(/"/g,"")}"` : t;
+const sq = t => `'${t.replace(/'/g,"")}'`;
+function uniqT(arr){ const s = new Set(); return arr.filter(x => { const k = x.toLowerCase(); if (s.has(k)) return false; s.add(k); return true; }); }
+function termsFor(items, {mesh = "free", es = false, eric = "free"} = {}){
+  const out = {ctrl:[], free:[], eric:[]};
+  for (const t of items) {
+    if (t.k === "mesh") { if (mesh === "ctrl") out.ctrl.push(t.t); else out.free.push(t.t); }
+    else if (t.k === "eric") { if (eric === "ctrl") out.eric.push(t.t); else out.free.push(t.t); }
+    else if (t.k === "es") { if (es) out.free.push(t.t); }
+    else out.free.push(t.t);
+  }
+  out.ctrl = uniqT(out.ctrl); out.eric = uniqT(out.eric); out.free = uniqT(out.free); return out;
+}
+function built(db){
+  const A = activeBlocks().filter(b => b.items.length); if (!A.length) return {lines:"", one:"", empty:true};
+  const esI = S.search.opts.esIntl, L = [], parts = [], n = A.length, lab = b => (b.key === "_design" ? "D" : b.key) + " · " + b.label;
+  const join = (arr, fn) => arr.map(fn).join(" OR ");
+  if (db === "pubmed") { A.forEach((x,i) => { const t = termsFor(x.items, {es:esI}); const s = "(" + join(t.free, dq) + ")"; parts.push(s); L.push(`#${i+1}  ${lab(x)}\n${s}`); }); L.push(`#${n+1}  Final strategy\n${A.map((_,i) => "#" + (i+1)).join(" AND ")}`); }
+  else if (db === "scopus") { A.forEach(x => { const t = termsFor(x.items, {es:esI}); parts.push("TITLE-ABS-KEY(" + join(t.free, z => `"${z}"`) + ")"); }); L.push(parts.join("\nAND\n")); }
+  else if (db === "wos") { A.forEach((x,i) => { const t = termsFor(x.items, {es:esI}); const s = "TS=(" + join(t.free, z => `"${z}"`) + ")"; parts.push(s); L.push(`#${i+1}  ${s}`); }); L.push(`#${n+1}  ${A.map((_,i) => "#" + (i+1)).join(" AND ")}`); }
+  else if (db === "embase") { A.forEach((x,i) => { const t = termsFor(x.items, {mesh:S.search.opts.emtree ? "ctrl" : "free", es:esI}); const s = [...t.ctrl.map(c => sq(c.toLowerCase()) + "/exp"), ...t.free.map(f => sq(f) + ":ti,ab,kw")].join(" OR "); parts.push("(" + s + ")"); L.push(`#${i+1}  ${s}`); }); L.push(`#${n+1}  ${A.map((_,i) => "#" + (i+1)).join(" AND ")}`); }
+  else if (db === "cochrane") { let ln = 0; const refs = []; A.forEach(x => { const t = termsFor(x.items, {mesh:"ctrl"}), r = []; t.ctrl.forEach(c => { ln++; L.push(`#${ln}  [mh "${c}"]`); r.push("#" + ln); }); if (t.free.length) { ln++; L.push(`#${ln}  (${join(t.free, f => `"${f}"`)}):ti,ab,kw`); r.push("#" + ln); } if (r.length > 1) { ln++; L.push(`#${ln}  ${r.join(" OR ")}`); refs.push("#" + ln); } else refs.push(r[0]); parts.push("(" + [...t.ctrl.map(c => `[mh "${c}"]`), t.free.length ? `(${join(t.free, f => `"${f}"`)}):ti,ab,kw` : ""].filter(Boolean).join(" OR ") + ")"); }); ln++; L.push(`#${ln}  ${refs.join(" AND ")}`); }
+  else if (db === "bvs") { A.forEach(x => { const t = termsFor(x.items, {mesh:"ctrl", es:true}); parts.push("(" + [...t.ctrl.map(c => `mh:"${c}"`), ...t.free.map(f => `"${f}"`)].join(" OR ") + ")"); }); L.push(parts.join("\nAND\n")); }
+  else if (db === "eric") { A.forEach(x => { const t = termsFor(x.items, {eric:"ctrl"}), f = join(t.free, z => `"${z}"`); parts.push("(" + [...t.eric.map(d => `DE "${d}"`), f ? `TI(${f})` : "", f ? `AB(${f})` : ""].filter(Boolean).join(" OR ") + ")"); }); L.push(parts.join("\nAND\n")); }
+  else if (db === "cinahl" || db === "psycinfo") { A.forEach(x => { const f = join(termsFor(x.items, {es:esI}).free, dq); parts.push(`(TI(${f}) OR AB(${f}))`); }); L.push(parts.join("\nAND\n")); }
+  else if (db === "scielo" || db === "redalyc" || db === "dialnet") { A.forEach(x => { parts.push("(" + join(termsFor(x.items, {es:true}).free, f => `"${f}"`) + ")"); }); L.push(parts.join("\nAND\n")); }
+  else if (db === "heinonline") { A.forEach(x => { parts.push("(" + join(termsFor(x.items, {es:esI}).free, f => `"${f}"`) + ")"); }); L.push(parts.join("\nAND\n")); }
+  else if (db === "jstor") { A.forEach(x => { const f = join(termsFor(x.items, {es:esI}).free, z => `"${z}"`); parts.push(`(ti:(${f}) OR ab:(${f}))`); }); L.push(parts.join("\nAND\n")); }
+  else if (db === "ieee") { A.forEach(x => { parts.push("(" + join(termsFor(x.items, {es:esI}).free, f => `"All Metadata":"${f}"`) + ")"); }); L.push(parts.join("\nAND\n")); }
+  else if (db === "sciencedirect") { A.forEach((x,i) => { const t = termsFor(x.items, {es:esI}), s = "TITLE-ABSTR-KEY(" + join(t.free, f => `"${f}"`) + ")"; parts.push(s); const ops = t.free.length - 1; L.push(`Block ${i+1} · ${lab(x)}${ops > 8 ? `  (${ops} operators: over ScienceDirect's limit of 8; split into separate searches)` : ""}\n${s}`); }); L.push("Final strategy\n" + parts.join(" AND ")); }
+  return {lines:L.join("\n\n"), one:parts.join(" AND ")};
+}
+function formulaFor(db){ const b = built(db); return b.empty ? "(Add terms to the blocks.)" : b.lines; }
+function visibleDBs(){ const v = AREA_DB[S.p.area] || AREA_DB.salud; return Object.keys(DBS).filter(d => v.includes(d)); }
+function prismaS(){
+  const d = new Date().toISOString().slice(0,10), A = activeBlocks(), F = FRAMEWORKS[S.p.marco] || [];
+  let s = `SEARCH STRATEGY · Systematic Review Laboratory (Tau Clinical Research)\nPrepared: ${d}\n\nReview question: ${S.p.preg || "(not written)"}\nFramework: ${S.p.marco}${T().disenoBloque ? " + study design block (umbrella review)" : ""}\nBlocks in the strategy: ${A.filter(b => b.items.length).map(b => b.key === "_design" ? "D" : b.key).join(" AND ") || "none"}\n`;
+  A.forEach(b => { const it = b.items, g = k => it.filter(t => t.k === k).map(t => t.t + (t.ui ? " (" + t.ui + ")" : "")).join("; ") || "none";
+    s += `\n[${b.key === "_design" ? "D" : b.key}] ${b.label}\n  MeSH: ${g("mesh")}\n  ERIC: ${g("eric")}\n  Supplementary concepts: ${g("scr")}\n  Other thesauri: ${it.filter(t => t.k === "voc").map(t => t.t + " (" + (VOCABS[t.v] ? VOCABS[t.v].short : "") + ")").join("; ") || "none"}\n  Free text (English): ${g("free")}\n  Spanish: ${g("es")}\n`; });
+  visibleDBs().forEach(db => { const b = built(db); if (b.empty) return; const lg = S.search.log.find(r => vnorm(r.db).includes(vnorm(DBS[db].l).split(" ")[0])) || {};
+    s += `\n----------------------------------------\nDatabase: ${DBS[db].l}\nPlatform: ${DBS[db].p}\nDate searched: ${lg.fecha || "____________"}\nLimits applied with the interface (and why): ${lg.lim || "____________"}\nRecords retrieved: ${lg.n || "______"}\n\n${b.lines}\n`; });
+  s += `\n----------------------------------------\nSupplementary searches (trial registers, grey literature, citation searching): ____________\nReference manager and deduplication: ____________\nVocabularies: MeSH 2026 (NLM) and the thesauri listed above. Validate descriptors in each database and peer review the strategy with PRESS.\nBuilt with the Tau Strategy Builder engine · Dr Joshuan J. Barboza · Tau Clinical Research\n`;
+  return s;
+}
+function hlCode(code){ return esc(code).replace(/(^|\n)(#\d+)/g, '$1<span class="ln">$2</span>').replace(/\b(AND|OR|NOT)\b/g, '<span class="op">$1</span>').replace(/(TITLE-ABSTR-KEY|TITLE-ABS-KEY|TS=|:ti,ab,kw|\/exp|\[mh |mh:|\bDE |\bTI\(|\bAB\(|\bti:|\bab:|&quot;All Metadata&quot;:)/g, '<span class="fld">$1</span>'); }
+function searchChanged(){ save(); renderSearch(); renderChain(); refreshPrompts(); }
+function renderSearch(){
+  ensureSearchState(); if (!$("#p-bus").hidden) ensureVocs();
+  const vis = visibleDBs(); if (!vis.includes(S.search.db) && S.search.db !== "report") S.search.db = vis[0];
+  const db = S.search.db;
+  $("#dbseg").innerHTML = vis.map(k => `<button type="button" data-db="${k}" aria-pressed="${k === db}">${esc(DBS[k].l)}</button>`).join("") + `<button type="button" data-db="report" aria-pressed="${db === "report"}">PRISMA-S report</button>`;
+  if (db === "report") { $("#formula").textContent = prismaS(); $("#dbnote").textContent = "Minimum PRISMA-S record per database. Dates, limits and record counts come from the search log below."; $("#pubrun").hidden = true; }
+  else { const b = built(db); $("#formula").innerHTML = b.empty ? "(Add terms to the blocks.)" : hlCode(b.lines); $("#dbnote").textContent = DB_NOTES[db] || ""; const pr = $("#pubrun"); pr.hidden = db !== "pubmed" || b.empty; if (!b.empty) pr.href = "https://pubmed.ncbi.nlm.nih.gov/?term=" + encodeURIComponent(b.one); }
+  $("#opt-es").checked = !!S.search.opts.esIntl; $("#opt-emtree").checked = !!S.search.opts.emtree;
+  const blocks = activeBlocks(), items = [], exp = searchComps().length + (T().disenoBloque ? 1 : 0), filled = blocks.filter(b => b.items.length).length;
+  items.push([filled === exp ? "ok" : "bad", "Blocks with terms: " + filled + " of " + exp + " expected (one per ticked component" + (T().disenoBloque ? ", plus design" : "") + ")."]);
+  blocks.forEach(b => {
+    const it = b.items, K = b.key === "_design" ? "D" : b.key, hasC = it.some(z => ["mesh","eric","scr","voc"].includes(z.k)), hasF = it.some(z => z.k === "free");
+    if (!it.length) { items.push(["bad","Block " + K + " is empty."]); return; }
+    if (hasC && !hasF) items.push(["warn","Block " + K + ": controlled vocabulary only. Add free terms; MeSH is assigned months after publication."]);
+    if (!hasC && hasF) items.push(["warn","Block " + K + ": free terms only. Look up the matching descriptor in your field’s thesauri (double column)."]);
+    if (it.filter(z => z.k === "free").length === 1) items.push(["warn","Block " + K + ": a single free term. Add synonyms, acronyms and spelling variants."]);
+    if (!it.some(z => z.k === "es") && vis.some(d => ["bvs","scielo","redalyc","dialnet"].includes(d))) items.push(["warn","Block " + K + ": no Spanish term; BVS, SciELO, Redalyc and Dialnet will retrieve less."]);
+    const seen = new Set(); it.forEach(x => { termIssues(x.t).forEach(i => items.push([i[0], "“" + x.t + "”: " + i[1]])); });
+  });
+  if (filled > 4) items.push(["warn", filled + " blocks combined with AND: every extra block lowers sensitivity. Keep only concepts every eligible study must have."]);
+  if (S.p.srch.C === true && (S.p.marco || "").startsWith("PICO")) items.push(["warn","The comparator is inside the Boolean string. It is rarely needed and usually loses studies."]);
+  items.push(["ok","PubMed without brackets or field tags; limits applied with the interface filters."]);
+  items.push(["ok","No truncation or wildcards and no NOT operator; Embase with single quotes."]);
   $("#srchchecks").innerHTML = items.map(x => `<li><span class="pill ${x[0]}" style="justify-self:start">${x[0] === "ok" ? "✓" : x[0] === "warn" ? "!" : "✗"}</span><span>${esc(x[1])}</span><span></span></li>`).join("");
-  const v = searchViolations(), bs = $("#blocksum");
-  bs.textContent = blocks.length + " blocks · " + blocks.reduce((a,b) => a + b.terms.length, 0) + " terms"; bs.className = "pill " + (v.bad ? "bad" : "ok");
-  renderLog();
+  const v = searchViolations(), bs = $("#blocksum"); bs.textContent = blocks.length + " blocks · " + blocks.reduce((a,b) => a + b.items.length, 0) + " terms"; bs.className = "pill " + (v.bad ? "bad" : "ok");
+  renderLog(); renderVocList();
 }
 $("#dbseg").addEventListener("click", e => { const b = e.target.closest("[data-db]"); if (!b) return; S.search.db = b.dataset.db; save(); renderSearch(); });
-$("#copyformula").addEventListener("click", () => copyText(formulaFor(S.search.db || "pubmed"), $("#fmsg"), "Search string copied."));
-function allFormulas(){ return Object.entries(DBS).map(([k,d]) => d.l + "\n" + formulaFor(k)).join("\n\n"); }
-$("#copyall").addEventListener("click", () => copyText(allFormulas(), $("#fmsg"), "Search strategy appendix copied."));
+$("#copyformula").addEventListener("click", () => copyText(S.search.db === "report" ? prismaS() : formulaFor(S.search.db), $("#fmsg"), "Copied (line by line)."));
+$("#copyone").addEventListener("click", () => copyText(S.search.db === "report" ? prismaS() : built(S.search.db).one, $("#fmsg"), "Copied (one line)."));
+$("#copyall").addEventListener("click", () => copyText(prismaS(), $("#fmsg"), "PRISMA-S report with all strategies copied."));
+$("#opt-es").addEventListener("change", e => { S.search.opts.esIntl = e.target.checked; searchChanged(); });
+$("#opt-emtree").addEventListener("change", e => { S.search.opts.emtree = e.target.checked; searchChanged(); });
 function renderLog(){
   const L = S.search.log;
   $("#logrows").innerHTML = L.length ? L.map((r,i) => `<tr>
@@ -1576,15 +1955,16 @@ function renderLog(){
     <td><input type="date" aria-label="Date" id="lg-fe-${i}" data-lg="${i}" data-f="fecha" value="${esc(r.fecha)}"></td>
     <td><input type="text" aria-label="Limits" id="lg-li-${i}" data-lg="${i}" data-f="lim" value="${esc(r.lim)}"></td>
     <td><input type="number" min="0" aria-label="Records" id="lg-n-${i}" data-lg="${i}" data-f="n" value="${esc(r.n)}" style="width:100px"></td>
-    <td><button class="btn small" data-del="${i}" aria-label="Remove">Remove</button></td></tr>`).join("") : '<tr><td colspan="6" class="msg">Add each database when you run the search.</td></tr>';
+    <td><button class="btn small" data-del="${i}" aria-label="Remove">Remove</button></td></tr>`).join("") : '<tr><td colspan="6" class="msg">Add each source when you run the search.</td></tr>';
   const tot = L.reduce((a,r) => a + num(r.n), 0);
-  $("#logtotal").textContent = L.length ? "Total database records: " + fmt(tot) + ". This total feeds the first box of the flow diagram." : "";
+  $("#logtotal").textContent = L.length ? "Total records from databases: " + tot.toLocaleString("en-US") + ". This total feeds the first box of the flow diagram." : "";
   if (!$("#dblist")) { const dl = document.createElement("datalist"); dl.id = "dblist"; document.body.append(dl); }
-  $("#dblist").innerHTML = [...new Set(Object.values(AREAS).flatMap(a => a.bases))].map(b => `<option value="${esc(b)}">`).join("");
+  $("#dblist").innerHTML = Object.values(DBS).map(d => `<option value="${esc(d.l)}">`).join("");
 }
-$("#logrows").addEventListener("input", e => { const i = e.target.dataset.lg; if (i == null) return; S.search.log[+i][e.target.dataset.f] = e.target.value; save(); const tot = S.search.log.reduce((a,r) => a + num(r.n), 0); $("#logtotal").textContent = "Total database records: " + fmt(tot) + ". This total feeds the first box of the flow diagram."; renderFlow(); renderChain(); });
+$("#logrows").addEventListener("input", e => { const i = e.target.dataset.lg; if (i == null) return; S.search.log[+i][e.target.dataset.f] = e.target.value; save(); const tot = S.search.log.reduce((a,r) => a + num(r.n), 0); $("#logtotal").textContent = "Total records from databases: " + tot.toLocaleString("en-US") + ". This total feeds the first box of the flow diagram."; renderFlow(); renderChain(); });
 $("#logrows").addEventListener("click", e => { const b = e.target.closest("[data-del]"); if (!b) return; S.search.log.splice(+b.dataset.del, 1); save(); renderLog(); renderFlow(); renderChain(); });
-$("#addlog").addEventListener("click", () => { S.search.log.push({db:"",plat:"",fecha:new Date().toISOString().slice(0,10),lim:"",n:""}); save(); renderLog(); });
+$("#addlog").addEventListener("click", () => { const vis = visibleDBs(), used = S.search.log.map(r => r.db), next = vis.find(d => !used.includes(DBS[d].l)); S.search.log.push({db:next ? DBS[next].l : "", plat:next ? DBS[next].p : "", fecha:new Date().toISOString().slice(0,10), lim:"", n:""}); save(); renderLog(); });
+
 
 /* ===================== AUDITOR DE ESTILO ===================== */
 const LEX_EN = {
@@ -2145,7 +2525,7 @@ function buildDocx(phase){
   ch.push(new D.Paragraph({children:[new D.PageBreak()]}));
   ch.push(H("Supplementary Material 1. Search strategies", 1));
   ch.push(para("Each strategy combines one block per question component" + (t.disenoBloque ? " plus a study design block" : "") + ". Terms were entered in full, without field tags or truncation. Limits were applied with the filters of each interface."));
-  Object.entries(DBS).forEach(([k,d]) => { ch.push(H(d.l, 3)); formulaFor(k).split("\n").forEach(l => ch.push(mono(l))); });
+  visibleDBs().forEach(k => { const d = DBS[k]; ch.push(H(d.l + " (" + d.p + ")", 3)); formulaFor(k).split("\n").forEach(l => ch.push(mono(l))); });
   if (S.search.log.length) { ch.push(H("Search log (PRISMA-S)", 3)); ch.push(table(["Database","Platform","Date of search","Limits","Records"], S.search.log.map(r => [r.db, r.plat, r.fecha, r.lim, r.n ? NE(num(r.n)) : ""]), [28,18,16,22,16])); }
   const c = flowCalc();
   if (c.idTotal) {
@@ -2164,7 +2544,7 @@ function buildDocx(phase){
 
 /* ===================== PESTAÑAS, EJEMPLO, INICIO ===================== */
 const TABS = {dis:"p-dis", bus:"p-bus", red:"p-red", ref:"p-ref", aud:"p-aud", pri:"p-pri", rev:"p-rev", ent:"p-ent"};
-function showTab(k){ S.tab = k; save(); Object.entries(TABS).forEach(([t,p]) => { $("#tab-" + t).setAttribute("aria-selected", t === k); $("#" + p).hidden = t !== k; }); if (k === "pri") renderFlow(); if (k === "ref") renderRefs(); if (k === "ent") renderReport(); }
+function showTab(k){ S.tab = k; save(); Object.entries(TABS).forEach(([t,p]) => { $("#tab-" + t).setAttribute("aria-selected", t === k); $("#" + p).hidden = t !== k; }); if (k === "pri") renderFlow(); if (k === "ref") renderRefs(); if (k === "ent") renderReport(); if (k === "bus") { ensureVocs(); renderVocList(); } }
 Object.keys(TABS).forEach(k => $("#tab-" + k).addEventListener("click", () => showTab(k)));
 $("#resetzone").addEventListener("click", e => {
   const z = $("#resetzone");
@@ -2371,8 +2751,8 @@ $("#refverify").addEventListener("click", async () => {
 $("#exload").addEventListener("click", () => loadExample($("#exsel").value));
 $("#au-flawed").addEventListener("click", () => { $("#au-text").value = FLAWED_SAMPLE; runAudit(); });
 
-init();
 
+init();
 })();
 </script>
 
