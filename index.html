@@ -199,6 +199,17 @@ table.t input,table.t select{padding:5px 7px;font-size:13.5px}
 .expara .why{font-size:14px;background:var(--acc-soft);border-radius:6px;padding:8px 10px}
 .expara .reveal{justify-self:start}
 .rules{margin:10px 0 0;padding-left:18px;font-size:14.5px}
+.subprog{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:0 0 12px;position:sticky;top:0;z-index:2;background:var(--surface-2);padding:8px 0;border-bottom:1px solid var(--line)}
+.subprog .sp{border:1px solid var(--line);background:var(--surface);color:var(--muted);border-radius:999px;padding:3px 10px;font-size:12.5px;cursor:pointer;font-family:var(--body)}
+.subprog .sp.done{border-color:var(--ok);color:var(--ok);background:var(--ok-soft)}
+.gblock{scroll-margin-top:64px}
+.gblock.written{border-color:var(--ok)}
+.gdet>summary{cursor:pointer;font-size:13.5px;font-weight:600;color:var(--brand);margin:6px 0 2px}
+.subbox{margin-top:12px;border-top:1px dashed var(--line);padding-top:10px}
+.subbox label{display:block;font-weight:700;font-size:14px;margin-bottom:4px}
+.subbox textarea{width:100%;min-height:72px;resize:vertical}
+.subfoot{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px}
+#draft.assembled{background:var(--surface-2);color:var(--ink)}
 .gblock{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:14px 16px;margin-bottom:12px}
 .gblock h4{font-size:16px;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
 .gblock h4 .n{font-family:var(--mono);font-size:11px;color:var(--brand);background:var(--brand-soft);border-radius:999px;padding:2px 8px}
@@ -451,7 +462,7 @@ footer.site img{height:34px;filter:var(--logo);vertical-align:middle;margin-righ
             <div class="mhead">
               <div class="label">What to write and how</div>
               <div class="seg" role="group" aria-label="Model view">
-                <button type="button" data-mv="guia" aria-pressed="true">Full guide</button>
+                <button type="button" data-mv="guia" aria-pressed="true">Guide · write by subsection</button>
                 <button type="button" data-mv="orden" aria-pressed="false">Order</button>
                 <button type="button" data-mv="lib" aria-pressed="false">Examples by review type</button>
                 <button type="button" data-mv="ejemplo" aria-pressed="false">Annotated example</button>
@@ -462,8 +473,8 @@ footer.site img{height:34px;filter:var(--logo);vertical-align:middle;margin-righ
           </div>
 
           <div class="field">
-            <label for="draft">Your draft</label>
-            <span class="hint">Paste the section as it stands in your Word file. It is saved only in this browser.</span>
+            <div class="row" style="justify-content:space-between"><label for="draft" id="draftlab">Assembled section</label><button type="button" class="btn small" id="togglewhole">Edit the whole section instead</button></div>
+            <span class="hint" id="drafthint"></span>
             <textarea id="draft" rows="12"></textarea>
           </div>
           <div class="signals" id="signals"></div>
@@ -1369,7 +1380,7 @@ function copyText(t, msgEl, okText){
 
 /* ===================== ESTADO ===================== */
 const KEY = "srlab-tau-en-v1";
-function blank(){ return {v:1, example:false, meta:{autor:"",grupo:"",revista:"",idioma:"en"}, p:{tipo:"rsma",area:"salud",marco:"PICO",comp:{},srch:{},preg:"",titulo:"",obj:"",dis:[],rob:[],sint:"",regBase:"",reg:""}, search:{blocks:{},design:"",db:"pubmed",log:[]}, flow:{}, ck:{}, drafts:{}, checks:{}, tutor:{}, log:[], sec:"m3", phase:"manuscrito", tab:"dis", decl:"en"}; }
+function blank(){ return {v:1, example:false, meta:{autor:"",grupo:"",revista:"",idioma:"en"}, p:{tipo:"rsma",area:"salud",marco:"PICO",comp:{},srch:{},preg:"",titulo:"",obj:"",dis:[],rob:[],sint:"",regBase:"",reg:""}, search:{blocks:{},design:"",db:"pubmed",log:[]}, flow:{}, ck:{}, drafts:{}, subs:{}, whole:{}, checks:{}, tutor:{}, log:[], sec:"m3", phase:"manuscrito", tab:"dis", decl:"en"}; }
 function exampleState(){ const e = EXLIB[0], s = blank(); s.example = true; s.exId = e.id; s.p = JSON.parse(JSON.stringify(e.p)); s.search = JSON.parse(JSON.stringify(e.search)); s.flow = {...e.flow}; s.drafts = {...e.drafts}; return s; }
 function normalizeState(o){
   const b = blank(), s = Object.assign(b, o || {});
@@ -1378,7 +1389,7 @@ function normalizeState(o){
   ["dis","rob"].forEach(k => { if (!Array.isArray(s.p[k])) s.p[k] = []; });
   if (!s.search.blocks || typeof s.search.blocks !== "object") s.search.blocks = {};
   if (!Array.isArray(s.search.log)) s.search.log = [];
-  ["flow","ck","drafts","checks","tutor"].forEach(k => { if (!s[k] || typeof s[k] !== "object") s[k] = {}; });
+  ["flow","ck","drafts","subs","whole","checks","tutor"].forEach(k => { if (!s[k] || typeof s[k] !== "object") s[k] = {}; });
   if (!Array.isArray(s.log)) s.log = [];
   if (!TYPE[s.p.tipo]) s.p.tipo = "rsma"; if (!AREAS[s.p.area]) s.p.area = "salud"; if (!FRAMEWORKS[s.p.marco]) s.p.marco = TYPE[s.p.tipo].marcos[0];
   if (!SECMAP[s.sec]) s.sec = "m3"; if (!["protocolo","manuscrito"].includes(s.phase)) s.phase = SECMAP[s.sec].ph;
@@ -2095,13 +2106,31 @@ let MV = "guia";
 document.querySelectorAll("[data-mv]").forEach(b => b.addEventListener("click", () => { MV = b.dataset.mv; renderModel(); }));
 function adaptNote(id){ const a = (ADAPT_TYPE[S.p.tipo] || {})[id] || (ADAPT[grp()] || {})[id]; return a || ""; }
 function renderAdapt(){ const n = adaptNote(S.sec), box = $("#s-adapt"); box.hidden = !n; box.innerHTML = n ? `<b>Adjustment for ${esc(T().nombre.toLowerCase())}</b>${esc(n)}` : ""; }
+function subSignal(t){ if (!String(t).trim()) return "Not written yet."; const w = words(t), a = auditText(t, "auto"); return fmt(w) + " words · " + (a.fails ? a.fails + " style alert" + (a.fails > 1 ? "s" : "") + " (see the auditor)" : "no style alerts"); }
+function assemble(sec){ const m = S.subs[sec] || {}, keys = guideFor(sec).map(b => b.en), extra = Object.keys(m).filter(k => !keys.includes(k)); return [...keys, ...extra].map(k => String(m[k] || "").trim()).filter(Boolean).join("\n"); }
+function splitDraft(sec){ const keys = guideFor(sec).map(b => b.en), paras = String(S.drafts[sec] || "").split(/\n+/).map(x => x.trim()).filter(Boolean), m = {}; paras.forEach((p,i) => { const k = keys[Math.min(i, keys.length - 1)]; m[k] = m[k] ? m[k] + "\n" + p : p; }); S.subs[sec] = m; }
+function ensureSubs(sec){ if (!S.subs[sec]) { if (String(S.drafts[sec] || "").trim()) splitDraft(sec); else S.subs[sec] = {}; } }
+function renderDraftMode(){
+  const whole = !!S.whole[S.sec], d = $("#draft");
+  d.readOnly = !whole; d.classList.toggle("assembled", !whole);
+  $("#draftlab").textContent = whole ? "Your draft · whole section" : "Assembled section";
+  $("#drafthint").textContent = whole ? "Paste or edit the whole section. Go back to the boxes to write it subsection by subsection." : "Built automatically from the subsection boxes above, in manuscript order. Edit the boxes; this is what the auditor, the tutor and the Word export use.";
+  $("#togglewhole").textContent = whole ? "Back to subsection boxes" : "Edit the whole section instead";
+}
 function renderModel(){
   document.querySelectorAll("[data-mv]").forEach(b => b.setAttribute("aria-pressed", b.dataset.mv === MV));
   const s = SECMAP[S.sec], body = $("#mbody");
   if (MV === "guia") {
-    const gs = guideFor(S.sec), total = gs.reduce((a,b) => a + b.items.length, 0);
-    body.innerHTML = `<div class="gintro"><span class="pill brand">${gs.length} subsections · ${total} aspects</span><span class="msg">Filtered for ${esc(T().nombre.toLowerCase())}. The English heading is the one to use in the manuscript.</span></div>` +
-      gs.map((b,i) => `<div class="gblock"><h4><span class="n">${i+1}</span>${esc(b.h)}<span class="en">${esc(b.en)}</span></h4><ul>${b.items.map(x => `<li>${esc(x)}</li>`).join("")}</ul><div class="say"><b>How it reads</b>${esc(b.ej)}</div><div class="err"><b>Common error</b>${esc(b.err)}</div></div>`).join("") +
+    const gs = guideFor(S.sec), total = gs.reduce((a,b) => a + b.items.length, 0), whole = !!S.whole[S.sec], m = S.subs[S.sec] || {};
+    const done = gs.filter(b => (m[b.en] || "").trim()).length;
+    body.innerHTML = `<div class="gintro"><span class="pill brand">${gs.length} subsections · ${total} aspects</span><span class="msg">Filtered for ${esc(T().nombre.toLowerCase())}. ${whole ? "You are editing the whole section in the box below." : "Write each subsection in its own box; the section assembles itself below."}</span></div>` +
+      (whole ? "" : `<div class="subprog" role="navigation" aria-label="Subsections"><span class="pill ${done === gs.length ? "ok" : ""}" id="subcount">${done}/${gs.length} written</span>${gs.map((b,i) => `<button type="button" class="sp ${(m[b.en] || "").trim() ? "done" : ""}" data-go="${i}">${i+1} · ${esc(b.en)}</button>`).join("")}</div>`) +
+      gs.map((b,i) => { const txt = m[b.en] || "", has = !!txt.trim();
+        const guide = `<ul>${b.items.map(x => `<li>${esc(x)}</li>`).join("")}</ul><div class="say"><b>How it reads</b>${esc(b.ej)}</div><div class="err"><b>Common error</b>${esc(b.err)}</div>`;
+        return `<div class="gblock ${has ? "written" : ""}" id="gb-${i}"><h4><span class="n">${i+1}</span>${esc(b.h)}<span class="en">${esc(b.en)}</span>${!whole ? `<span class="pill ok wmark" ${has ? "" : "hidden"}>written</span>` : ""}</h4>` +
+          (whole ? guide : `<details class="gdet" ${has ? "" : "open"}><summary>What to write here (${b.items.length} aspects)</summary>${guide}</details>
+          <div class="subbox"><label for="sub-${i}">Your text · ${esc(b.en)}</label><textarea id="sub-${i}" data-sub="${i}" rows="${has ? Math.min(12, Math.max(3, Math.ceil(txt.length / 95) + 1)) : 3}" placeholder="Write this subsection in English: ${esc(b.items[0] || "")}">${esc(txt)}</textarea>
+          <div class="subfoot"><span class="msg" id="subsig-${i}">${subSignal(txt)}</span>${i < gs.length - 1 ? `<button type="button" class="btn small" data-go="${i+1}">Next: ${esc(gs[i+1].en)} ↓</button>` : `<button type="button" class="btn small primary" data-nextsec>Section done · next section →</button>`}</div></div>`) + `</div>`; }).join("") +
       `<p class="msg" style="margin:4px 0 0">English example sentences use the worked example; figures are illustrative. Copy the function, not the words.</p>`;
     return;
   }
@@ -2138,7 +2167,8 @@ function openSection(id){
   $("#s-prod").textContent = s.prod;
   $("#s-prueba").textContent = s.prueba;
   $("#s-ext").textContent = s.ext ? fmt(s.ext[0]) + "–" + fmt(s.ext[1]) + " words" : "Length per journal";
-  $("#draft").value = S.drafts[id] || "";
+  ensureSubs(id); if (!S.whole[id]) S.drafts[id] = assemble(id) || S.drafts[id] || "";
+  $("#draft").value = S.drafts[id] || ""; renderDraftMode();
   $("#tresp").value = (S.tutor[id] && S.tutor[id].texto) || "";
   ["#dictmsg","#msg-sec","#stylemsg"].forEach(x => $(x).textContent = ""); $("#dictout").innerHTML = "";
   renderAdapt(); renderChecks(); renderSignals(); renderModel(); renderCalib();
@@ -2151,7 +2181,30 @@ function renderChecks(){
   const ts = $("#tutorstate"), n = Object.keys(d).length; ts.textContent = n ? "Verdict logged" : "No verdict"; ts.className = "pill " + (n ? "ok" : "");
 }
 $("#checks").addEventListener("change", e => { const i = e.target.dataset.i; if (i == null) return; const arr = S.checks[S.sec] || []; arr[+i] = e.target.checked; S.checks[S.sec] = arr; save(); renderCalib(); renderReport(); if (updSec) updSec(); });
-$("#draft").addEventListener("input", e => { S.drafts[S.sec] = e.target.value; save(); renderSignals(); renderReport(); });
+$("#draft").addEventListener("input", e => { if (!S.whole[S.sec]) return; S.drafts[S.sec] = e.target.value; save(); renderSignals(); renderReport(); });
+let subT;
+$("#mbody").addEventListener("input", e => {
+  const i = e.target.dataset.sub; if (i == null) return;
+  const b = guideFor(S.sec)[+i]; if (!b) return;
+  ensureSubs(S.sec); S.subs[S.sec][b.en] = e.target.value; S.drafts[S.sec] = assemble(S.sec);
+  $("#draft").value = S.drafts[S.sec]; save();
+  const ta = e.target; ta.rows = Math.min(14, Math.max(3, ta.value.split("\n").reduce((a,l) => a + Math.max(1, Math.ceil(l.length / 95)), 0) + 1));
+  const has = !!ta.value.trim(), gb = $("#gb-" + i); gb.classList.toggle("written", has); const wm = gb.querySelector(".wmark"); if (wm) wm.hidden = !has;
+  const sp = document.querySelector(`.subprog [data-go="${i}"]`); if (sp) sp.classList.toggle("done", has);
+  const gs = guideFor(S.sec), n = gs.filter(x => (S.subs[S.sec][x.en] || "").trim()).length, sc = $("#subcount"); if (sc) { sc.textContent = n + "/" + gs.length + " written"; sc.className = "pill " + (n === gs.length ? "ok" : ""); }
+  clearTimeout(subT); subT = setTimeout(() => { $("#subsig-" + i).textContent = subSignal(ta.value); renderSignals(); renderReport(); renderRoute(); }, 350);
+});
+$("#mbody").addEventListener("click", e => {
+  const g = e.target.closest("[data-go]");
+  if (g) { const el = $("#gb-" + g.dataset.go); if (el) { el.scrollIntoView({behavior:"smooth", block:"start"}); const ta = el.querySelector("textarea"); if (ta) setTimeout(() => ta.focus({preventScroll:true}), 350); } return; }
+  if (e.target.closest("[data-nextsec]")) { const list = SECTIONS.filter(x => x.ph === S.phase), k = list.findIndex(x => x.id === S.sec); if (k < list.length - 1) { openSection(list[k+1].id); $("#p-red").scrollIntoView({behavior:"smooth"}); } }
+});
+$("#togglewhole").addEventListener("click", () => {
+  const sec = S.sec;
+  if (S.whole[sec]) { S.whole[sec] = false; splitDraft(sec); S.drafts[sec] = assemble(sec); }
+  else { S.whole[sec] = true; S.drafts[sec] = assemble(sec) || S.drafts[sec] || ""; }
+  save(); $("#draft").value = S.drafts[sec] || ""; renderDraftMode(); MV = "guia"; renderModel(); renderSignals();
+});
 $("#draft").addEventListener("change", () => renderRoute());
 function renderSignals(){
   const s = SECMAP[S.sec], t = S.drafts[S.sec] || "", w = words(t), out = [];
