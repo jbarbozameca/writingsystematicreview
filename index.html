@@ -1,4 +1,3 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <meta charset="utf-8">
 <title>Systematic Review Laboratory</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -39,6 +38,13 @@ button,select,input,textarea{font:inherit;color:inherit}
 a{color:var(--acc)}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto!important}}
 
+.credbar{background:var(--acc);color:#fff;font-size:13.5px}
+.credbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:6px 16px;flex-wrap:wrap;padding-block:7px}
+.credbar a{color:#fff;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.credbar .cta{background:#fff;color:#0d4f51;text-decoration:none;border-radius:999px;padding:3px 12px;white-space:nowrap}
+.band .who a.enrol{display:block;width:fit-content;margin:8px 0 0 auto;background:#fff;color:var(--band);font-weight:700;border-radius:999px;padding:4px 12px;text-decoration:none;font-size:12.5px}
+.footcred{border-top:1px solid var(--line);margin-top:10px;padding-top:10px;display:flex;justify-content:space-between;gap:8px 16px;flex-wrap:wrap;align-items:center}
+.footcred b{font-family:var(--display)}
 header.band{background:var(--band);color:#fff;padding-block:20px 0}
 .band .top{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:18px;align-items:center}
 .band .logo{width:84px;height:auto;filter:invert(1)}
@@ -292,6 +298,7 @@ footer.site img{height:34px;filter:var(--logo);vertical-align:middle;margin-righ
 .confirm{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:14px}
 </style>
 
+<div class="credbar"><div class="wrap"><span>Created by <b>Dr Joshuan J. Barboza</b> · Tau Clinical Research</span><span>Learn to write your review with us: <a class="cta" href="https://investigaciontau.com/cursos-online/" target="_blank" rel="noopener">Enrol in the Diploma programme →</a></span></div></div>
 <header class="band">
   <div class="wrap">
     <div class="top">
@@ -304,6 +311,7 @@ footer.site img{height:34px;filter:var(--logo);vertical-align:middle;margin-righ
       <div class="who">
         <b>Dr Joshuan J. Barboza</b>
         PhD in Clinical and Translational Research<br>RENACYT Distinguished Researcher
+        <a class="enrol" href="https://investigaciontau.com/cursos-online/" target="_blank" rel="noopener">Diploma programme · investigaciontau.com</a>
         <div class="chips"><span class="chip" id="chip-tipo"></span><span class="chip" id="chip-guia"></span></div>
       </div>
     </div>
@@ -676,7 +684,7 @@ footer.site img{height:34px;filter:var(--logo);vertical-align:middle;margin-righ
           <div class="label">Authorship and credits</div>
           <h3 style="margin-top:4px">Dr Joshuan J. Barboza</h3>
           <div class="roles">PhD in Clinical and Translational Research · RENACYT Distinguished Researcher · Research Professor, Office of the Vice-Rector for Research, Universidad Señor de Sipán · Cochrane member (USIL, affiliated with INS) · Founder of Tau Clinical Research</div>
-          <p style="margin:0 0 6px">Concept, methodological content, search rules, writing pattern catalogue and teaching design: Dr Joshuan J. Barboza. ORCID <a href="https://orcid.org/0000-0002-2896-1407" target="_blank" rel="noopener">0000-0002-2896-1407</a> · Scopus ID 57204457871 · <a href="https://investigaciontau.com" target="_blank" rel="noopener">investigaciontau.com</a></p>
+          <p style="margin:0 0 6px">Concept, methodological content, search rules, writing pattern catalogue and teaching design: Dr Joshuan J. Barboza. ORCID <a href="https://orcid.org/0000-0002-2896-1407" target="_blank" rel="noopener">0000-0002-2896-1407</a> · Scopus ID 57204457871 · <a href="https://investigaciontau.com" target="_blank" rel="noopener">investigaciontau.com</a> · Enrol in the Diploma programme: <a href="https://investigaciontau.com/cursos-online/" target="_blank" rel="noopener">investigaciontau.com/cursos-online</a></p>
           <p style="margin:0 0 6px">Search engine: <b>Tau Strategy Builder</b> (Constructor de Estrategias Tau), also by Dr Joshuan J. Barboza: thesaurus look-up and syntax for 16 databases. Vocabularies: MeSH and supplementary concepts (U.S. National Library of Medicine), ERIC Thesaurus (Institute of Education Sciences), NCI Thesaurus, Human Phenotype Ontology, UNESCO Thesaurus, ELSST (CESSDA), EuroVoc (European Union), STW (ZBW), AGROVOC (FAO), GEMET (European Environment Agency), NASA Thesaurus, Getty AAT and Library of Congress Subject Headings, each used under its own licence.</p>
           <p class="msg" style="margin:0">© 2026 Tau Clinical Research. All rights reserved. For educational use in Tau Clinical Research programmes. Cite as: Barboza JJ. Systematic Review Laboratory [web tool]. Tau Clinical Research; 2026.</p>
           <details style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">Methodological foundations and reporting guidelines</summary><ol class="refs" id="refs"></ol></details>
@@ -698,6 +706,7 @@ footer.site img{height:34px;filter:var(--logo);vertical-align:middle;margin-righ
 </main>
 <footer class="site wrap">
   <div class="row"><span><img data-logo src="data:image/png;base64,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" alt="">Systematic Review Laboratory · Tau Clinical Research · created by Dr Joshuan J. Barboza</span><span>Follows PRISMA 2020 and its extensions. Your text is saved only in this browser.</span></div>
+  <div class="footcred"><span>© 2026 <b>Dr Joshuan J. Barboza</b> · Tau Clinical Research · ORCID <a href="https://orcid.org/0000-0002-2896-1407" target="_blank" rel="noopener">0000-0002-2896-1407</a></span><span>Diploma programme in systematic reviews and meta-analysis: <a href="https://investigaciontau.com/cursos-online/" target="_blank" rel="noopener"><b>investigaciontau.com/cursos-online</b></a></span></div>
 </footer>
 <script>
 (function(){
@@ -2755,5 +2764,3 @@ $("#au-flawed").addEventListener("click", () => { $("#au-text").value = FLAWED_S
 init();
 })();
 </script>
-
-</body></html>
